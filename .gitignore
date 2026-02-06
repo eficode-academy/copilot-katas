@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+bin/
+obj/
+
+# IDE
+.vscode/settings.json
+.idea/
+*.suo
+*.user
+
+# Build outputs
+dist/
+build/
+*.dll
+*.exe
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+
+# Test coverage
+coverage/
+.coverage
+htmlcov/

@@ -1,0 +1,5 @@
+# GitHub Copilot Katas - Python Todo App
+# Dependencies for the Todo application
+
+flask>=3.0.0
+pytest>=8.0.0
