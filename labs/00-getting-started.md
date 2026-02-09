@@ -119,7 +119,7 @@ Let's make sure Copilot is functioning correctly.
 ### Task 2: Test Copilot Chat
 
 1. Open Copilot Chat by pressing `Cmd+Shift+I` (Mac) or `Ctrl+Shift+I` (Windows/Linux)
-   - Or click the chat icon in the sidebar
+   - Or click the chat icon next to the search bar at the top.
 
 2. Type the following prompt:
    ```
@@ -146,8 +146,8 @@ Let's make sure Copilot is functioning correctly.
 |--------|-----|---------------|
 | Accept suggestion | `Tab` | `Tab` |
 | Dismiss suggestion | `Esc` | `Esc` |
-| See next suggestion | `Option+]` | `Alt+]` |
-| See previous suggestion | `Option+[` | `Alt+[` |
+| See next suggestion | `-` | `Alt+]` |
+| See previous suggestion | `-` | `Alt+[` |
 | Open Copilot Chat | `Cmd+Shift+I` | `Ctrl+Shift+I` |
 | Inline Chat | `Cmd+I` | `Ctrl+I` |
 | Show all suggestions | `Ctrl+Enter` | `Ctrl+Enter` |

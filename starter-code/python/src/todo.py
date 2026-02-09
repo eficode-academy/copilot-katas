@@ -22,16 +22,3 @@ from typing import Optional
 
 # Start by typing a comment describing the Todo class,
 # then let Copilot help you implement it.
-
-# You can use a dataclass or a regular class.
-# Example comment to try:
-# Create a Todo dataclass with properties: id (int), text (str), 
-# completed (bool, default False), and created_at (datetime, default now)
-
-# Alternatively, try a regular class:
-# class Todo:
-#     """Represents a single todo item."""
-#     
-#     def __init__(self, id: int, text: str, completed: bool = False):
-#         # Let Copilot complete this
-#         pass

@@ -18,7 +18,3 @@
 
 // Start by typing a comment describing the Todo class,
 // then let Copilot help you implement it.
-
-// Example comment to try:
-// Create a Todo class with properties: id (number), text (string), 
-// completed (boolean, default false), and createdAt (Date, default now)

@@ -11,7 +11,7 @@ By the end of this lab, you will be able to:
 
 ## Introduction
 
-Inline code completion is the core feature of GitHub Copilot. As you type, Copilot analyzes your code context and suggests completions that appear as "ghost text" in your editor.
+Inline code completion is one of the core features of GitHub Copilot. As you type, Copilot analyzes your code context and suggests completions that appear as "ghost text" in your editor.
 
 ### How It Works
 
@@ -94,24 +94,24 @@ This is one of Copilot's most powerful features: describe what you want in plain
 
 Add these comments to your code file and let Copilot generate the implementations:
 
-**Comment 1 - Add Todo:**
-```
-// Function to add a new todo item to the list
-```
-
-**Comment 2 - Remove Todo:**
-```
-// Function to remove a todo item by its id
-```
-
-**Comment 3 - Toggle Complete:**
-```
+**Comment 1 - Toggle Complete:**
+```1
 // Function to toggle the completed status of a todo item
 ```
 
-**Comment 4 - Filter Todos:**
+**Comment 2 - Update Title:**
 ```
-// Function to filter todos by their completion status
+// Function to update the title/text of a todo item
+```
+
+**Comment 3 - Update Text:**
+```
+// Function to update the text of a todo item
+```
+
+**Comment 4 - Get Summary:**
+```
+// Function to return a summary of the todo item (id and title only)
 ```
 
 **✅ Try This:**
@@ -120,36 +120,13 @@ Add these comments to your code file and let Copilot generate the implementation
 3. Review the suggestion before accepting
 4. Modify the comment if the suggestion isn't what you wanted
 
-### Task 2.2: Be Specific for Better Results
-
-Compare these prompts and see how specificity affects suggestions:
-
-**Vague comment:**
-```
-// sort the list
-```
-
-**Specific comment:**
-```
-// Sort todos by creation date in descending order (newest first)
-```
-
-**Very specific comment:**
-```
-// Sort todos array by createdAt property in descending order, returning a new sorted array without modifying the original
-```
-
-**🔬 Experiment:** Try different levels of detail and observe how suggestions change.
-
----
-
 ## Exercise 3: Next Edit Suggestions (NES)
 
 Copilot can predict where you'll want to edit next and suggest changes. This feature is incredibly powerful for repetitive tasks.
 
 ### Task 3.1: Repetitive Property Addition
 
-1. Create a Todo class with one property
+1. Create a new Todo object with one property
 2. After adding the first property, Copilot may suggest adding similar properties
 3. Look for the lightbulb or the "Next Edit" indicator
 
@@ -227,7 +204,7 @@ Now let's put it all together! Use inline completion to build a TodoList manager
 
 Create a `TodoList` class/module with the following methods:
 
-1. **addTodo(text)** - Add a new todo with auto-generated ID and timestamp
+1. **addTodo(title, text)** - Add a new todo with auto-generated ID and timestamp
 2. **removeTodo(id)** - Remove a todo by ID
 3. **toggleTodo(id)** - Toggle completion status
 4. **getTodos()** - Get all todos
@@ -255,9 +232,9 @@ class TodoList {
         // Copilot should suggest initialization
     }
     
-    // Add a new todo item with the given text
+    // Add a new todo item with the given title and text
     // Returns the created todo object
-    addTodo(text) {
+    addTodo(title, text) {
         // Let Copilot fill this in
     }
 }
@@ -274,8 +251,8 @@ class TodoList:
         # Copilot should suggest initialization
         pass
     
-    def add_todo(self, text: str) -> dict:
-        """Add a new todo item with the given text. Returns the created todo."""
+    def add_todo(self, title: str, text: str) -> dict:
+        """Add a new todo item with the given title and text. Returns the created todo."""
         # Let Copilot fill this in
         pass
 ```
@@ -290,14 +267,36 @@ public class TodoList
 {
     // Let Copilot suggest properties
     
-    // Add a new todo item with the given text
+    // Add a new todo item with the given title and text
     // Returns the created todo object
-    public Todo AddTodo(string text)
+    public Todo AddTodo(string title, string text)
     {
         // Let Copilot fill this in
     }
 }
 ```
+
+### Task 5.1: Be Specific for Better Results
+
+Compare these prompts and see how specificity affects suggestions:
+
+**Vague comment:**
+```
+// sort the list
+```
+
+**Specific comment:**
+```
+// Sort todos by creation date in descending order (newest first)
+```
+
+**Very specific comment:**
+```
+// Sort todos array by createdAt property in descending order, returning a new sorted array without modifying the original
+```
+
+**🔬 Experiment:** Try different levels of detail and observe how suggestions change.
+
 
 ---
 
