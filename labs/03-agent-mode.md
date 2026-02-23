@@ -1,4 +1,4 @@
-# Lab 04 - Agent Mode
+# Lab 03 - Agent Mode
 
 ## Learning Goals
 
@@ -12,7 +12,7 @@ By the end of this lab, you will be able to:
 
 ## Introduction
 
-Agent Mode is the most autonomous mode of GitHub Copilot. Unlike Edit Mode where you guide each change, Agent Mode:
+Agent Mode is the most autonomous mode of GitHub Copilot. Unlike Ask Mode where you only get answers, Agent Mode:
 
 - **Plans and executes** multi-step tasks independently
 - **Creates new files** when needed
@@ -360,7 +360,7 @@ Add offline support to the Todo app:
 |----------|----------------|
 | Quick code fix | Inline completion |
 | Understanding code | Ask Mode |
-| Targeted single edit | Edit Mode |
+| Targeted single edit | Inline Chat (`Cmd+I`) |
 | **New feature (multiple files)** | Agent Mode ✓ |
 | **Generating test suites** | Agent Mode ✓ |
 | **Project setup** | Agent Mode ✓ |
@@ -427,21 +427,9 @@ Please also:
 
 ## Congratulations! 🎉
 
-You've completed all the GitHub Copilot Katas!
+You've completed the Agent Mode lab! Now let's learn to plan before we build.
 
-### What You've Learned
-
-1. **Inline Completion** - Fast, contextual code suggestions
-2. **Chat (Ask Mode)** - Conversational Q&A and learning
-3. **Edit Mode** - Targeted, reviewable code changes
-4. **Agent Mode** - Autonomous multi-step task execution
-
-### Next Steps
-
-- Practice these skills on your own projects
-- Explore advanced features like custom instructions
-- Check out the [Cheatsheet](../CHEATSHEET.md) for quick reference
-- Share your learnings with your team!
+👉 Continue to [Lab 04 - Plan Mode](04-plan-mode.md)
 
 ---
 

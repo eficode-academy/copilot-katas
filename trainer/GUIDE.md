@@ -9,8 +9,8 @@ This guide is for trainers running the GitHub Copilot Katas workshop.
 | Lab 00 - Getting Started | 15 min | Setup and verification |
 | Lab 01 - Inline Completion | 30-45 min | Core Copilot features |
 | Lab 02 - Chat Window | 30-45 min | Conversational AI |
-| Lab 03 - Edit Mode | 30-45 min | Direct file editing |
-| Lab 04 - Agent Mode | 45-60 min | Autonomous tasks |
+| Lab 03 - Agent Mode | 45-60 min | Autonomous tasks |
+| Lab 04 - Plan Mode | 30-45 min | Planned implementation |
 
 **Total Workshop Time:** 2.5 - 4 hours (depending on depth)
 
@@ -70,24 +70,7 @@ This guide is for trainers running the GitHub Copilot Katas workshop.
 2. Demonstrate `@workspace` for cross-file questions
 3. Show a multi-turn refactoring conversation
 
-### Lab 03 - Edit Mode
-
-**Key Points to Emphasize:**
-- Always review diffs before accepting
-- Can modify multiple files at once
-- Good for coordinated changes
-
-**Common Issues:**
-- Accepting without reviewing
-- Not being specific about files to change
-- Large changes overwhelming
-
-**Demo Ideas:**
-1. Add a property across multiple files
-2. Show incremental acceptance
-3. Demonstrate asking for revisions
-
-### Lab 04 - Agent Mode
+### Lab 03 - Agent Mode
 
 **Key Points to Emphasize:**
 - Agent works autonomously - give goals not steps
@@ -103,6 +86,24 @@ This guide is for trainers running the GitHub Copilot Katas workshop.
 1. Generate a complete test suite
 2. Create a new feature end-to-end
 3. Show the agent exploring the codebase
+
+### Lab 04 - Plan Mode
+
+**Key Points to Emphasize:**
+- Plan Mode helps structure complex work before execution
+- Encourages thinking before coding
+- Plans can be iterated on before any code is written
+- Great for large features or unfamiliar codebases
+
+**Common Issues:**
+- Skipping the planning phase and jumping to execution
+- Not iterating on the plan before implementing
+- Plans that are too vague or too detailed
+
+**Demo Ideas:**
+1. Plan a new feature with multiple components
+2. Show how to refine a plan through conversation
+3. Demonstrate executing a plan step by step
 
 ---
 

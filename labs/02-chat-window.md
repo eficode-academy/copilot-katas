@@ -426,6 +426,6 @@ I have a bug where todos sometimes don't save correctly. Here's my code... Can y
 
 ## What's Next?
 
-You've learned to have productive conversations with Copilot. Now let's use Edit Mode for direct code modifications.
+You've learned to have productive conversations with Copilot. Now let's use Agent Mode for autonomous multi-step tasks.
 
-👉 Continue to [Lab 03 - Edit Mode](03-edit-mode.md)
+👉 Continue to [Lab 03 - Agent Mode](03-agent-mode.md)

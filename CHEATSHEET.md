@@ -33,8 +33,8 @@ Quick reference for GitHub Copilot features, shortcuts, and best practices.
 | Mode | Purpose | Best For |
 |------|---------|----------|
 | **Ask** | Read-only Q&A | Learning, explanations, code review |
-| **Edit** | Propose file changes | Refactoring, adding features |
-| **Agent** | Autonomous tasks | Complex multi-file changes |
+| **Agent** | Autonomous tasks | Complex multi-file changes, new features |
+| **Plan** | Plan then execute | Structured implementation, large features |
 
 ---
 
@@ -138,26 +138,6 @@ function formatDate(dateString) {
 
 ---
 
-## 🏗️ Edit Mode Tips
-
-### Multi-File Changes
-
-```
-✅ Reference files explicitly:
-"In #file:todo.js and #file:todoList.js, add validation..."
-
-✅ Be clear about scope:
-"Update all files that use the Todo class to include priority"
-```
-
-### Review Carefully
-
-- Check diffs before accepting
-- Accept changes incrementally
-- Ask for revisions if needed
-
----
-
 ## 🤖 Agent Mode Tips
 
 ### Good Prompts
@@ -176,6 +156,27 @@ function formatDate(dateString) {
 - Give goals, not step-by-step instructions
 - Let it explore the codebase
 - Review terminal commands before allowing
+
+---
+
+## 📋 Plan Mode Tips
+
+### Good Planning Prompts
+
+```
+✅ "I want to add a notifications feature. Help me plan:
+1. What models and services are needed
+2. How to integrate with the existing code
+3. What tests to write
+4. What order to implement things"
+```
+
+### Iterate on the Plan
+
+- Review the generated plan before executing
+- Ask Copilot to adjust scope or approach
+- Break large plans into smaller phases
+- Use the plan as a checklist during implementation
 
 ---
 

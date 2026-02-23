@@ -33,8 +33,8 @@ Before we begin, let's clarify some terms:
 - **Inline Completion**: Code suggestions that appear directly in your editor as you type (ghost text)
 - **Copilot Chat**: A chat interface for interacting with Copilot conversationally
 - **Ask Mode**: Read-only chat for questions and explanations
-- **Edit Mode**: Direct file modifications from the chat
 - **Agent Mode**: Autonomous multi-step task execution
+- **Plan Mode**: Plan an implementation before executing it
 - **Ghost Text**: The grayed-out suggestions that appear as you type
 - **Context**: Information Copilot uses to generate relevant suggestions (open files, comments, etc.)
 

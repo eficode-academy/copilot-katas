@@ -59,18 +59,19 @@ Learn to use the Copilot Chat effectively:
 - Adding context with `@workspace`, `@terminal`, `#file`
 - Learning and refactoring code
 
-### [Lab 03 - Edit Mode](labs/03-edit-mode.md)
-Make targeted changes with Edit Mode:
-- Single file modifications
-- Multi-file changes
-- Working with review suggestions
-
-### [Lab 04 - Agent Mode](labs/04-agent-mode.md)
+### [Lab 03 - Agent Mode](labs/03-agent-mode.md)
 Let Copilot take the wheel:
 - Creating new files and features
 - Generating unit tests
 - Autonomous multi-step tasks
 - Using MCP tools
+
+### [Lab 04 - Plan Mode](labs/04-plan-mode.md)
+Plan before you build:
+- Creating implementation plans with Copilot
+- Iterating on plans before coding
+- Executing plans step by step
+- Combining planning with agent execution
 
 ## 📁 Project Structure
 
@@ -82,8 +83,8 @@ copilot-katas/
 │   ├── 00-getting-started.md
 │   ├── 01-inline-completion.md
 │   ├── 02-chat-window.md
-│   ├── 03-edit-mode.md
-│   └── 04-agent-mode.md
+│   ├── 03-agent-mode.md
+│   └── 04-plan-mode.md
 ├── starter-code/
 │   ├── javascript/
 │   │   ├── package.json
