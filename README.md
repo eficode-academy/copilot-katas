@@ -13,19 +13,17 @@ Whether you're new to AI pair programming or looking to level up your skills, th
 Throughout this workshop, you'll work with two projects using GitHub Copilot as your AI pair programmer:
 
 ### Part 1: Todo Application (Labs 00–04)
-- ✅ Add new to-do items
-- ✅ Mark items as completed
-- ✅ Remove items
-- ✅ Edit existing items
-- ✅ Filter by status (all/active/completed)
-- ✅ Persist data in local storage
+- ⌨️ Generate code with **inline completion** and comment-driven suggestions
+- 💬 Explore and refactor code through Chat in **Ask Mode**
+- 🤖 Build full features autonomously with **Agent Mode**
+- 📋 Plan complex changes before coding with **Plan Mode**
 
 ### Part 2: Recipe Book API (Labs 05–09)
-- 🔌 Connect Copilot to external tools with MCP
-- 📏 Define coding standards with custom instructions
-- 📄 Build reusable prompt templates
-- 🤖 Create specialized custom agents
-- 🧠 Encode domain expertise as skills
+- 🔌 Connect Copilot to external tools with **MCP**
+- 📏 Define coding standards with **Custom Instructions**
+- 📄 Build reusable **Prompt Templates**
+- 🤖 Create specialized **Custom Agents**
+- 🧠 Encode domain expertise as **Skills**
 
 ## 🛠️ Prerequisites
 
