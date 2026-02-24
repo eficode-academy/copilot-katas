@@ -73,7 +73,6 @@ Let Copilot take the wheel:
 - Creating new files and features
 - Generating unit tests
 - Autonomous multi-step tasks
-- Using MCP tools
 
 ### [Lab 04 - Plan Mode](labs/04-plan-mode.md)
 Plan before you build:
