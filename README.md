@@ -10,8 +10,9 @@ Whether you're new to AI pair programming or looking to level up your skills, th
 
 ## 🎯 What You'll Build
 
-Throughout this workshop, you'll build a **To-Do Application** using GitHub Copilot as your AI pair programmer. The app includes:
+Throughout this workshop, you'll work with two projects using GitHub Copilot as your AI pair programmer:
 
+### Part 1: Todo Application (Labs 00–04)
 - ✅ Add new to-do items
 - ✅ Mark items as completed
 - ✅ Remove items
@@ -19,18 +20,24 @@ Throughout this workshop, you'll build a **To-Do Application** using GitHub Copi
 - ✅ Filter by status (all/active/completed)
 - ✅ Persist data in local storage
 
+### Part 2: Recipe Book API (Labs 05–09)
+- 🔌 Connect Copilot to external tools with MCP
+- 📏 Define coding standards with custom instructions
+- 📄 Build reusable prompt templates
+- 🤖 Create specialized custom agents
+- 🧠 Encode domain expertise as skills
+
 ## 🛠️ Prerequisites
 
 Before you begin, ensure you have:
 
 1. **VS Code** installed ([Download](https://code.visualstudio.com/))
-2. **GitHub Copilot** extension installed and activated
-3. **GitHub Copilot Chat** extension installed
-4. A valid **GitHub Copilot subscription** (individual or organization)
+2. **GitHub Copilot Chat** extension installed
+3. A valid **GitHub Copilot subscription** (individual or organization)
 
 ### Choose Your Language
 
-This workshop supports multiple programming languages. Choose one:
+The first workshop supports multiple programming languages. Choose one:
 
 | Language | Requirements |
 |----------|-------------|
@@ -40,7 +47,9 @@ This workshop supports multiple programming languages. Choose one:
 
 ## 📚 Workshop Structure
 
-The workshop is divided into four main exercises, each focusing on different GitHub Copilot features:
+The workshop is divided into two parts covering core and advanced GitHub Copilot features:
+
+### Part 1: Core Features (Todo App)
 
 ### [Lab 00 - Getting Started](labs/00-getting-started.md)
 Set up your environment and verify Copilot is working correctly.
@@ -73,6 +82,44 @@ Plan before you build:
 - Executing plans step by step
 - Combining planning with agent execution
 
+### Part 2: Advanced Customization (Recipe API)
+
+### [Lab 05 - MCP (Model Context Protocol)](labs/05-mcp.md)
+Extend Copilot with external tools and data:
+- Installing MCP servers from the gallery and configuring `mcp.json`
+- Server types: stdio (local) and HTTP/SSE (remote)
+- Using MCP tools, resources, prompts, and apps
+- Input variables for secure API key management
+- Server trust, management, and combining multiple servers
+
+### [Lab 06 - Custom Instructions](labs/06-instructions.md)
+Teach Copilot your team's conventions:
+- Repo-level instructions (`.github/copilot-instructions.md`)
+- File-scoped instructions (`.instructions.md` with `applyTo` globs)
+- Auto-generating instructions with `/init`
+- Verifying with the diagnostics view
+
+### [Lab 07 - Prompt Files](labs/07-prompts.md)
+Create reusable task templates:
+- Building `.prompt.md` files with YAML frontmatter
+- Variables (`${file}`, `${selection}`, `${input:name}`)
+- Configuring agent mode, model, and tools per prompt
+- Building a prompt library for your team
+
+### [Lab 08 - Custom Agents](labs/08-agents.md)
+Build specialized AI team members:
+- Creating `.agent.md` files with YAML frontmatter
+- Agent tools, models, and visibility controls
+- Handoffs for multi-agent workflows
+- Agents dropdown and `/agents` command
+
+### [Lab 09 - Custom Skills](labs/09-skills.md)
+Encode deep domain expertise:
+- Creating `SKILL.md` files in named directories
+- Progressive 3-level loading and automatic discovery
+- Including resources (scripts, templates, data) alongside skills
+- `/skills` command and visibility controls
+
 ## 📁 Project Structure
 
 ```
@@ -84,18 +131,29 @@ copilot-katas/
 │   ├── 01-inline-completion.md
 │   ├── 02-chat-window.md
 │   ├── 03-agent-mode.md
-│   └── 04-plan-mode.md
+│   ├── 04-plan-mode.md
+│   ├── 05-mcp.md
+│   ├── 06-instructions.md
+│   ├── 07-prompts.md
+│   ├── 08-agents.md
+│   └── 09-skills.md
 ├── starter-code/
-│   ├── javascript/
+│   ├── javascript/          ← Todo App (Labs 00-04)
 │   │   ├── package.json
 │   │   ├── index.html
 │   │   └── src/
-│   ├── python/
+│   ├── python/              ← Todo App (Labs 00-04)
 │   │   ├── requirements.txt
 │   │   └── src/
-│   └── csharp/
-│       ├── TodoApp.csproj
+│   ├── csharp/              ← Todo App (Labs 00-04)
+│   │   ├── TodoApp.csproj
+│   │   └── src/
+│   └── recipe-api/          ← Recipe API (Labs 05-09)
+│       ├── package.json
+│       ├── README.md
 │       └── src/
+├── trainer/
+│   └── GUIDE.md
 └── solutions/
     └── (reference implementations)
 ```

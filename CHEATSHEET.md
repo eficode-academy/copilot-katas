@@ -180,6 +180,262 @@ function formatDate(dateString) {
 
 ---
 
+## 🔌 MCP (Model Context Protocol) Tips
+
+### Installing MCP Servers
+
+- Open Extensions view (`Cmd+Shift+X`) → search `@mcp` to browse the gallery
+- Click **Install** (user profile) or right-click → **Install in Workspace** (`.vscode/mcp.json`)
+- Run `MCP: Add Server` from Command Palette for a guided flow
+
+### Configuration (`.vscode/mcp.json`)
+
+```json
+{
+  "servers": {
+    "fetch": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-fetch@latest"]
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp"
+    }
+  }
+}
+```
+
+### Server Types
+
+| Type | Use Case | Key Fields |
+|------|----------|------------|
+| `stdio` | Local servers | `command`, `args`, `env`, `envFile` |
+| `http` | Remote servers | `url`, `headers` |
+| `sse` | Remote (SSE only) | `url`, `headers` |
+
+### Input Variables (for secrets)
+
+```json
+{
+  "inputs": [{ "type": "promptString", "id": "api-key", "description": "API Key", "password": true }],
+  "servers": { "myServer": { "type": "http", "url": "...", "headers": { "Authorization": "Bearer ${input:api-key}" } } }
+}
+```
+
+### MCP Capabilities
+
+| Capability | Access |
+|------------|--------|
+| **Tools** | Automatically available in Agent Mode |
+| **Resources** | Add Context > MCP Resources |
+| **Prompts** | Type `/<server>.<prompt>` in chat |
+| **Apps** | Appear inline in chat |
+
+### Useful Commands
+
+| Command | Description |
+|---------|-------------|
+| `MCP: Add Server` | Add via guided flow |
+| `MCP: List Servers` | Manage all servers |
+| `MCP: Browse Resources` | Browse MCP resources |
+| `MCP: Reset Trust` | Re-require trust confirmation |
+
+### Tips
+
+- Use `${workspaceFolder}` for relative paths in config
+- Use camelCase for server names (e.g., `"uiTesting"`)
+- Never hardcode API keys — use `${input:id}` instead
+- Always review MCP tool calls before approving
+- Only add servers from trusted sources
+
+---
+
+## 📝 Custom Instructions Tips
+
+### Instruction Types
+
+| Type | File | Scope |
+|------|------|-------|
+| Repo-level | `.github/copilot-instructions.md` | Always applied to all chats |
+| File-scoped | `.github/instructions/*.instructions.md` | Applied to files matching `applyTo` glob |
+
+### File-Scoped Example
+
+```markdown
+---
+applyTo: "src/routes/**/*.js"
+---
+All route handlers must validate input and return consistent JSON responses.
+```
+
+### Useful Commands
+
+| Command | Description |
+|---------|-------------|
+| `/init` | Auto-generate instructions from your codebase |
+| Right-click → Diagnostics | See which instructions are loaded |
+
+### Priority Order
+
+Personal > Repository > Organization
+
+### Tips
+
+- Keep under ~1000 words for best results
+- Check into version control for team sharing
+- Use `applyTo` globs for language/folder-specific rules
+- Test by generating code and verifying compliance
+- Use `/init` to bootstrap instructions automatically
+
+---
+
+## 📄 Prompt Files Tips
+
+### Location
+
+```
+.github/prompts/
+├── new-endpoint.prompt.md
+├── write-tests.prompt.md
+└── code-review.prompt.md
+```
+
+### YAML Frontmatter
+
+```markdown
+---
+description: Create a new REST API endpoint
+agent: agent
+model: GPT-4.1
+tools: ['codebase', 'terminal', 'editFiles']
+---
+Your prompt content here...
+```
+
+### Variables
+
+| Variable | Description |
+|----------|-------------|
+| `${file}` | Current file content |
+| `${selection}` | Currently selected code |
+| `${input:name}` | Prompt user for input at runtime |
+
+### File References
+
+Reference other files using Markdown links:
+```markdown
+Use the patterns from [api routes](../src/routes/recipes.js)
+```
+
+### Usage
+
+1. Type `/` in Copilot Chat to see available prompts
+2. Select a prompt and Copilot executes the template
+3. Add extra context or instructions alongside the prompt
+
+---
+
+## 🤖 Custom Agents Tips
+
+### File Location
+
+```
+.github/agents/
+├── api-builder.agent.md
+├── test-writer.agent.md
+└── reviewer.agent.md
+```
+
+### Invoking Agents
+
+- Select from the **agents dropdown** at the top of the Chat view
+- Type `/agents` to quickly configure and manage agents
+
+### Agent Structure (with YAML frontmatter)
+
+```markdown
+---
+description: Expert API developer for building endpoints
+tools: ['codebase', 'terminal', 'editFiles']
+model: GPT-4.1
+---
+You are an expert API developer...
+```
+
+### Handoffs (multi-agent workflows)
+
+```yaml
+handoffs:
+  - label: Start Implementation
+    agent: api-builder
+    prompt: Implement the plan above.
+    send: false
+```
+
+### Visibility Control
+
+| Setting | Effect |
+|---------|--------|
+| `user-invokable: false` | Hidden from dropdown, available as subagent |
+| `disable-model-invocation: true` | In dropdown, can't be used as subagent |
+
+---
+
+## 🧠 Skills Tips
+
+### File Location (directory with `SKILL.md`)
+
+```
+.github/skills/
+├── recipe-validation/
+│   └── SKILL.md
+├── unit-conversion/
+│   ├── SKILL.md
+│   ├── tables/
+│   └── examples/
+└── api-design/
+    └── SKILL.md
+```
+
+### SKILL.md Structure
+
+```markdown
+---
+name: recipe-validation
+description: >-
+  Validates recipe data for the Recipe Book API.
+  Use when creating or reviewing validation logic.
+---
+# Recipe Validation
+Your domain knowledge, tables, rules...
+```
+
+### Key Concepts
+
+| Concept | Detail |
+|---------|--------|
+| **Auto-discovery** | Copilot finds relevant skills automatically |
+| **3-level loading** | Discovery → Instructions → Resources |
+| **`name` must match dir** | `name: x` requires directory `x/` |
+| **`/skills` command** | Manage and inspect available skills |
+
+### Visibility Control
+
+| Setting | Effect |
+|---------|--------|
+| `user-invokable: false` | Hidden from users, available to agents |
+| `disable-model-invocation: true` | User-only, not auto-discovered |
+
+### Tips
+
+- Description is critical — it determines if the skill gets loaded
+- Include resources (scripts, templates, data) alongside `SKILL.md`
+- Keep each skill focused on one domain area
+- Follows the open standard at agentskills.io
+
+---
+
 ## 📝 Common Patterns
 
 ### Generate Boilerplate

@@ -417,7 +417,7 @@ Please provide:
 
 ## Congratulations! 🎉
 
-You've completed all the GitHub Copilot Katas!
+You've completed Part 1 of the GitHub Copilot Katas!
 
 ### What You've Learned
 
@@ -428,10 +428,9 @@ You've completed all the GitHub Copilot Katas!
 
 ### Next Steps
 
-- Practice these skills on your own projects
-- Explore advanced features like custom instructions
-- Check out the [Cheatsheet](../CHEATSHEET.md) for quick reference
-- Share your learnings with your team!
+Ready to go deeper? Part 2 covers advanced Copilot customization using a new Recipe API project.
+
+👉 Continue to [Lab 05 - MCP (Model Context Protocol)](05-mcp.md)
 
 ---
 
