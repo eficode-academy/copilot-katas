@@ -38,14 +38,40 @@ When in Agent Mode, you'll see:
 
 ---
 
-## Exercise 1: Create a New Feature File
+## Exercise 1: Build the Frontend and Add Features
 
-### Task 1.1: Create a Statistics Module
+### Task 1.1: Build the Todo App Frontend
 
-Switch to Agent Mode and give this prompt:
+You've built the Todo model and TodoList logic in previous labs — but the app still shows "Coming Soon" in the browser! Let's use Agent Mode to bring it to life.
+
+Switch to **Agent Mode** and give this prompt:
 
 ```
-Create a new statistics module for the Todo application that provides:
+Build a working frontend for the Todo app:
+2. Create a new frontend module (e.g. src/ui.js or equivalent) that connects the TodoList class to the DOM
+3. Implement these interactions:
+   - Add a new todo from the input field (press Enter or click Add)
+   - Render the todo list showing checkbox, text, and delete button
+   - Toggle a todo's completed status by clicking its checkbox
+   - Delete a todo with the delete button
+   - Filter todos by All / Active / Completed using the filter buttons
+4. Start the server and verify it works in the browser
+```
+
+**✅ Observe:**
+- Agent reads the HTML file and discovers the commented-out UI scaffold
+- Agent creates a new frontend module for DOM interaction
+- Agent wires everything together across multiple files
+- Agent may run the server to verify — you finally see your Todo app come alive!
+
+> **💡 Tip:** After this task, open `http://localhost:3000` and test adding, completing, and deleting todos. This is the foundation all later UI tasks build on.
+
+### Task 1.2: Create a Statistics Module
+
+Now let's add backend features — and keep the frontend in sync. Give this prompt:
+
+```
+Create a statistics module for the Todo application that provides:
 1. Total count of todos
 2. Completed vs active counts
 3. Completion percentage
@@ -53,16 +79,22 @@ Create a new statistics module for the Todo application that provides:
 5. Most productive day of the week
 6. Streak tracking (consecutive days with completed todos)
 
-Create appropriate files for my chosen language, integrate with the existing TodoList, and add any necessary model changes.
+Create appropriate files for my chosen language, integrate with the existing TodoList,
+and add any necessary model changes.
+
+Also update the frontend to show a statistics dashboard:
+- Display total, active, and completed counts
+- Show completion percentage as a progress bar
+- Include streak tracking if available
+- Update the dashboard in real-time as todos change
 ```
 
 **✅ Observe:**
 - Agent reads existing files to understand the structure
-- Agent plans the implementation
-- Agent creates new files as needed
-- Agent may modify existing files for integration
+- Agent creates backend files and also updates the frontend
+- The UI now shows live statistics alongside the todo list
 
-### Task 1.2: Create a Search Feature
+### Task 1.3: Create a Search Feature
 
 ```
 Implement a full-text search feature for the Todo app:
@@ -70,6 +102,14 @@ Implement a full-text search feature for the Todo app:
 2. Support fuzzy matching for typo tolerance
 3. Add search result highlighting
 4. Create any helper utilities needed
+
+Also add a search bar to the frontend:
+- Place it above the todo list
+- Filter todos as the user types (using the SearchService)
+- Highlight matching text in search results
+- Show a "no results" message when nothing matches
+- Add a clear button to reset the search
+- Make sure search and the All/Active/Completed filters work together
 ```
 
 ---
@@ -147,6 +187,12 @@ Add a simple authentication system to the Todo app:
 6. Update existing code to work with authenticated users
 
 Don't use any external auth libraries - implement from scratch for learning purposes.
+
+Also update the frontend with an authentication UI:
+- Add a Login form (username + password) and a Register form
+- Show/hide the todo app based on auth state
+- Display the logged-in username in a header bar with a Logout button
+- Keep all existing functionality (statistics, search, filters) working
 ```
 
 ### Task 3.2: Add Data Export/Import
@@ -160,6 +206,11 @@ Add data export and import functionality:
 5. Handle conflicts during import (duplicate IDs)
 6. Add validation for imported data
 7. Create appropriate file handling utilities
+
+Also add export/import controls to the frontend:
+- Add an "Export" dropdown button with options for JSON and CSV
+- Add an "Import" button that opens a file picker for JSON/CSV files
+- Show a success/error toast notification after export or import
 ```
 
 ### Task 3.3: Database Integration
@@ -172,6 +223,8 @@ Add SQLite database support to the Todo app:
 4. Replace in-memory storage with database storage
 5. Add proper connection handling and cleanup
 6. Run the migrations and verify the setup
+
+Verify the frontend still works end-to-end after switching to database storage.
 ```
 
 ---
@@ -191,6 +244,13 @@ Build a complete notifications feature:
 4. Add methods to mark as read, clear all, get unread count
 5. Create any supporting utilities
 6. Add tests for the notification logic
+
+Also add a notification panel to the frontend:
+- Add a bell icon in the header with an unread count badge
+- Clicking the bell opens a dropdown panel listing notifications
+- Each notification shows type icon, message, and timestamp
+- Add "Mark all read" and "Clear" buttons
+- Overdue/due-soon notifications should be visually distinct (color/icon)
 ```
 
 ### Task 4.2: Recurring Todos
@@ -204,6 +264,14 @@ Implement recurring todos:
    - Manages recurrence exceptions (skip this week)
 3. Update TodoList to work with recurring todos
 4. Add tests for recurrence calculations
+
+Also update the frontend:
+- When adding or editing a todo, show a "Repeat" dropdown (None, Daily, Weekly, Monthly)
+- Show a recurrence icon on recurring todos in the list
+- When completing a recurring todo, show a brief toast: "Next occurrence created"
+- Add a due date picker when creating/editing a todo
+- Highlight overdue todos in the list (e.g. red text or border)
+- Show "Due today" and "Overdue" badges next to relevant todos
 ```
 
 ---
