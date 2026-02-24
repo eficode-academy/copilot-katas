@@ -40,7 +40,7 @@ Open your language's todo file and let Copilot help you create the basic Todo st
 ```javascript
 // Start typing this:
 class Todo {
-    // Just press Enter after the opening brace and see what Copilot suggests
+    // Just press Enter after the opening brace and see what Copilot suggests. Do not accept it yet!
 }
 ```
 
@@ -48,7 +48,7 @@ class Todo {
 ```python
 # Start typing this:
 class Todo:
-    # Press Enter and see what Copilot suggests for __init__
+    # Press Enter and see what Copilot suggests for __init__. Do not accept it yet!
 ```
 
 **C#** (`src/Todo.cs`):
@@ -56,7 +56,7 @@ class Todo:
 // Start typing this:
 public class Todo
 {
-    // Press Enter and see what Copilot suggests
+    // Press Enter and see what Copilot suggests. Do not accept it yet!
 }
 ```
 
@@ -64,12 +64,15 @@ public class Todo
 1. Type the class declaration
 2. Press Enter to go to a new line
 3. Wait for Copilot to suggest constructor/properties
-4. Press `Tab` to accept or `Esc` to dismiss
-5. Try typing just `pub` or `pri` and see what gets suggested
+4. Press `Cmd+→` (Mac) or `Ctrl+→` (Windows) to accept the next word. `Tab` to accept all or `Esc` to dismiss
+5. Try typing just `pub`, `def` or `pri` and see what gets suggested
 
 **💡 Tips:**
 - If you don't like a suggestion, press `Esc` and keep typing
-- Press `Alt+]` to see alternative suggestions
+- Press `Alt+]` (Windows) to see alternative suggestions or hover over the ghost text to see more options
+    <p>
+      <img src="images/in-line-hover-options.png" alt="Copilot Ghost Text"/>
+    </p>
 - The more context you provide, the better the suggestions
 
 ### Task 1.2: Smart Property Suggestions
@@ -134,23 +137,35 @@ Copilot can predict where you'll want to edit next and suggest changes. This fea
 
 Try this sequence:
 
+Write the following code to create a new Todo item:
+
 **JavaScript:**
 ```javascript
-const todo1 = { id: 1, text: 'Learn Copilot', completed: false };
-// Now start typing const todo2...
+const todo1 = { id: 1, text: 'Buy groceries', completed: false };
+const todo2 = { id: 2, text: 'Walk the dog', completed: false };
+const todo3 = { id: 3, text: 'Read a book', completed: false };
+const todo4 = { id: 4, text: 'Write code', completed: false };
 ```
 
 **Python:**
 ```python
-todo1 = {"id": 1, "text": "Learn Copilot", "completed": False}
-# Now start typing todo2...
+todo1 = Todo(id=1, text="Buy groceries", completed=False)
+todo2 = Todo(id=2, text="Walk the dog", completed=False)
+todo3 = Todo(id=3, text="Read a book", completed=False)
+todo4 = Todo(id=4, text="Write code", completed=False)
 ```
 
 **C#:**
 ```csharp
-var todo1 = new Todo { Id = 1, Text = "Learn Copilot", Completed = false };
-// Now start typing var todo2...
+var todo1 = new Todo { Id = 1, Text = "Buy groceries", Completed = false };
+var todo2 = new Todo { Id = 2, Text = "Walk the dog", Completed = false };
+var todo3 = new Todo { Id = 3, Text = "Read a book", Completed = false };
+var todo4 = new Todo { Id = 4, Text = "Write code", Completed = false };
 ```
+
+Then try to change the first variable name and id:
+-  `todo1` -> `todo0`
+-  id `1` -> `0` 
 
 **Observe:** Copilot recognizes the pattern and suggests the next item!
 
@@ -175,17 +190,7 @@ Sometimes you only want part of a suggestion. Learn to accept word by word:
 
 **Try it:** Get a long suggestion and accept just the first few words.
 
-### Task 4.2: See All Suggestions
-
-Press `Ctrl+Enter` to open the Copilot suggestions panel, showing multiple alternatives.
-
-**Try it:**
-1. Type a comment for a function
-2. Press `Ctrl+Enter`
-3. Review all suggested implementations
-4. Click the one you prefer
-
-### Task 4.3: Inline Chat for Quick Fixes
+### Task 4.2: Inline Chat for Quick Fixes
 
 Press `Cmd+I` (Mac) or `Ctrl+I` (Windows) to open inline chat:
 

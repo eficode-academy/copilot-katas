@@ -7,6 +7,7 @@
  * 
  * A Todo item should have:
  * - Id: unique identifier
+ * - Title: the todo title
  * - Text: the todo description
  * - Completed: boolean status
  * - CreatedAt: timestamp when created

@@ -7,6 +7,7 @@ GitHub Copilot Katas - Exercise 1
 
 A Todo item should have:
 - id: unique identifier
+- title: the todo title
 - text: the todo description
 - completed: boolean status
 - created_at: timestamp when created

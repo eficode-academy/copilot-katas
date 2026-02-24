@@ -61,7 +61,7 @@ npm install
 **Python:**
 ```bash
 cd starter-code/python
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
@@ -83,13 +83,13 @@ npm start
 **Python:**
 ```bash
 python src/main.py
-# Open http://localhost:5000 in your browser
+# Open http://localhost:3000 in your browser
 ```
 
 **C#:**
 ```bash
 dotnet run
-# Open http://localhost:5000 in your browser
+# Open http://localhost:3000 in your browser
 ```
 
 You should see a basic page with "Todo App - Coming Soon" message.
@@ -121,12 +121,14 @@ Let's make sure Copilot is functioning correctly.
 1. Open Copilot Chat by pressing `Cmd+Shift+I` (Mac) or `Ctrl+Shift+I` (Windows/Linux)
    - Or click the chat icon next to the search bar at the top.
 
-2. Type the following prompt:
+2. Make sure you're in "Ask Mode" 
+   <p><img src="images/ask-mode.png" alt="Ask mode"/></p>
+3. Type the following prompt:
    ```
    What is a Todo application?
    ```
 
-3. Copilot should respond with an explanation.
+4. Copilot should respond with an explanation.
 
 **✅ Success Criteria:** You receive a helpful response about Todo applications.
 
@@ -138,7 +140,7 @@ Let's make sure Copilot is functioning correctly.
    - `GitHub Copilot: Enable` - Toggle Copilot on/off
    - `GitHub Copilot: Inline Suggest Enable` - Toggle inline suggestions
 
-💡 **Tip**: You can quickly toggle Copilot on/off by clicking the Copilot icon in the status bar.
+💡 **Tip**: You can quickly toggle Copilot in-line suggestions on/off by clicking the Copilot icon in the status bar in the bottom right corner.
 
 ## Keyboard Shortcuts Reference
 

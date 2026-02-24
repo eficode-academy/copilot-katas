@@ -162,27 +162,7 @@ Add data export and import functionality:
 7. Create appropriate file handling utilities
 ```
 
----
-
-## Exercise 4: Agent with Terminal Commands
-
-### Task 4.1: Project Setup Automation
-
-Start a new language variant:
-
-```
-Set up a complete Python version of the Todo app:
-1. Create the project structure
-2. Set up virtual environment
-3. Install necessary dependencies
-4. Create a basic Flask/FastAPI web server
-5. Implement the Todo CRUD endpoints
-6. Add basic error handling
-7. Create a requirements.txt
-8. Test that the server starts correctly
-```
-
-### Task 4.2: Database Integration
+### Task 3.3: Database Integration
 
 ```
 Add SQLite database support to the Todo app:
@@ -196,9 +176,9 @@ Add SQLite database support to the Todo app:
 
 ---
 
-## Exercise 5: Building Complete Features
+## Exercise 4: Building Complete Features
 
-### Task 5.1: Notifications Feature
+### Task 4.1: Notifications Feature
 
 ```
 Build a complete notifications feature:
@@ -213,7 +193,7 @@ Build a complete notifications feature:
 6. Add tests for the notification logic
 ```
 
-### Task 5.2: Recurring Todos
+### Task 4.2: Recurring Todos
 
 ```
 Implement recurring todos:
@@ -228,9 +208,9 @@ Implement recurring todos:
 
 ---
 
-## Exercise 6: Exploring and Understanding
+## Exercise 5: Exploring and Understanding
 
-### Task 6.1: Code Analysis
+### Task 5.1: Code Analysis
 
 ```
 Analyze the current codebase and provide:
@@ -241,7 +221,7 @@ Analyze the current codebase and provide:
 5. A TODO list of technical debt to address
 ```
 
-### Task 6.2: Documentation Generation
+### Task 5.2: Documentation Generation
 
 ```
 Generate comprehensive documentation for this project:
@@ -254,9 +234,9 @@ Generate comprehensive documentation for this project:
 
 ---
 
-## Exercise 7: Advanced Agent Tasks
+## Exercise 6: Advanced Agent Tasks
 
-### Task 7.1: Performance Optimization
+### Task 6.1: Performance Optimization
 
 ```
 Analyze and optimize the Todo application for performance:
@@ -270,7 +250,7 @@ Analyze and optimize the Todo application for performance:
 5. Document the optimizations made
 ```
 
-### Task 7.2: Error Handling Overhaul
+### Task 6.2: Error Handling Overhaul
 
 ```
 Implement comprehensive error handling:
@@ -280,31 +260,6 @@ Implement comprehensive error handling:
 4. Add error recovery strategies
 5. Create user-friendly error messages
 6. Add tests for error scenarios
-```
-
----
-
-## Exercise 8: MCP Tools (Model Context Protocol)
-
-If you have MCP tools configured, Agent Mode can use them!
-
-### Task 8.1: Using External Tools
-
-```
-Use available tools to:
-1. Check if there are any open GitHub issues for this project
-2. Research best practices for Todo app architecture
-3. Find examples of similar implementations
-```
-
-### Task 8.2: Integration Tasks
-
-```
-If a database MCP tool is available:
-1. Connect to the database
-2. Create the necessary tables
-3. Migrate existing data
-4. Verify the integration
 ```
 
 ---
@@ -419,7 +374,7 @@ Please also:
 | **Agent is autonomous** | Give it goals, not step-by-step instructions |
 | **Multi-step capable** | Complex tasks with many files |
 | **Terminal access** | Can run commands (with permission) |
-| **Tool usage** | Uses search, file ops, and MCP tools |
+| **Tool usage** | Uses search and file ops |
 | **Requires review** | Always verify the work done |
 | **Best for big tasks** | New features, test suites, setup |
 

@@ -9,7 +9,7 @@
  * To run:
  *     dotnet run
  * 
- * Then open http://localhost:5000 in your browser.
+ * Then open http://localhost:3000 in your browser.
  */
 
 var builder = WebApplication.CreateBuilder(args);
@@ -80,14 +80,14 @@ Console.WriteLine("""
 
 🚀 Todo App Server Running!
    
-   Open http://localhost:5000 in your browser
+   Open http://localhost:3000 in your browser
    
    Ready for GitHub Copilot Katas exercises!
    Press Ctrl+C to stop the server.
 
 """);
 
-app.Run("http://localhost:5000");
+app.Run("http://localhost:3000");
 
 // ============================================
 // TODO: Build your Todo application below!

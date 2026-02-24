@@ -9,7 +9,7 @@ GitHub Copilot Katas - Python Version
 To run:
     python src/main.py
 
-Then open http://localhost:5000 in your browser.
+Then open http://localhost:3000 in your browser.
 """
 
 from flask import Flask, render_template_string, jsonify
@@ -90,12 +90,12 @@ if __name__ == '__main__':
     print("""
 🚀 Todo App Server Running!
    
-   Open http://localhost:5000 in your browser
+   Open http://localhost:3000 in your browser
    
    Ready for GitHub Copilot Katas exercises!
    Press Ctrl+C to stop the server.
 """)
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=3000)
 
 
 # ============================================

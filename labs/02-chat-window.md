@@ -26,6 +26,8 @@ Copilot Chat is your conversational AI partner. Unlike inline completion, Chat a
 | Open Chat in Editor | `Cmd+Ctrl+I` | `Ctrl+Alt+I` |
 | Quick Chat | `Cmd+Shift+P` → "Chat: Open Quick Chat" | `Ctrl+Shift+P` → "Chat: Open Quick Chat" |
 
+### Make sure the ask mode is selected:
+<p> <img src="images/ask-mode.png" alt="Ask Mode"/> </p>
 ---
 
 ## Exercise 1: Basic Chatbot Interaction
@@ -57,6 +59,9 @@ What's a good file structure for a simple Todo app?
 ### Task 1.2: Ask About Your Code
 
 With your Todo file open, try these prompts:
+
+**NOTE:** make sure to select the file in the chat window to provide context for these questions.
+<p> <img src="images/file-for-context.png" alt="Select file for context"/> </p>
 
 ```
 Explain what this file does
@@ -162,7 +167,6 @@ Context is crucial for accurate responses. Use `@` and `#` to provide Copilot wi
 | `@terminal` | Terminal output | `@terminal what does this error mean?` |
 | `#file` | Specific file | `#file:todo.js explain this file` |
 | `#selection` | Selected text | `#selection refactor this` |
-| `#editor` | Current editor content | `#editor find bugs in this file` |
 
 ### Task 3.1: Workspace Context
 
