@@ -11,13 +11,17 @@ By the end of this lab, you will be able to:
 
 ## Introduction
 
-Plan Mode is designed for when you want to think before you code. Instead of jumping straight into implementation, Plan Mode lets you:
+In the previous labs you've built a lot — a working Todo app with a frontend, statistics, search, authentication, database storage, notifications, and more. You did most of that by jumping straight into Agent Mode and letting Copilot figure it out.
+
+Plan Mode takes a different approach. Instead of jumping straight into implementation, Plan Mode lets you:
 
 - **Create a structured plan** before writing any code
 - **Iterate on the approach** through conversation
 - **Break down complex tasks** into manageable steps
 - **Review and adjust** before committing to an implementation
 - **Execute the plan** step by step or hand it off to Agent Mode
+
+This is especially valuable as your codebase grows — which is exactly where you are now.
 
 ### Accessing Plan Mode
 
@@ -41,6 +45,8 @@ Plan Mode is ideal when:
 
 ### Task 1.1: Plan a Simple Feature
 
+Your Todo app has grown through the previous labs, but todos are still a flat list with no organization. Let's plan a way to categorize them.
+
 Switch to **Plan Mode** in Copilot Chat and type:
 
 ```
@@ -51,9 +57,9 @@ Help me plan this feature.
 
 **✅ Observe:**
 - Copilot creates a structured implementation plan
-- The plan includes models, services, and integration points
+- The plan accounts for the existing codebase (models, services, UI)
 - Steps are broken down into logical phases
-- The plan considers the existing codebase
+- The plan considers integration with features already built (search, statistics, etc.)
 
 ### Task 1.2: Refine the Plan
 
@@ -82,40 +88,45 @@ Which approach would be easier to extend later?
 
 ### Task 2.1: Plan a Multi-File Feature
 
+Your app currently has a flat list of todos. Let's plan something more complex: nested subtasks with progress tracking.
+
 ```
-Plan the implementation of a "due date reminder" feature for the Todo app:
-- Users can set a due date on any todo
-- Todos that are past their due date should be highlighted
-- Users can filter to see overdue todos
-- A summary shows how many todos are overdue
+Plan the implementation of a "subtasks" feature for the Todo app:
+- Any todo can have child todos (subtasks)
+- A parent todo shows progress based on how many subtasks are completed
+- Subtasks can be collapsed/expanded in the UI
+- Completing all subtasks auto-completes the parent
 
 Please create a detailed plan with:
 1. What files need to be created or modified
 2. What changes are needed in each file
-3. The order to implement things
+3. The order to implement things (model → service → UI)
 4. How to test each piece
+5. How this interacts with existing features (search, statistics, recurring todos)
 ```
 
 **✅ Observe:**
 - The plan identifies specific files to change
 - Changes are ordered logically (model first, then service, then UI)
 - Testing is included at each step
+- The plan considers interactions with features you've already built
 
 ### Task 2.2: Plan with Constraints
 
 ```
-Plan a search feature for the Todo app with these constraints:
+Plan an undo/redo system for the Todo app with these constraints:
 - No external libraries allowed
-- Must support searching by title, description, and tags
-- Must be case-insensitive
-- Should work efficiently with 1000+ todos
-- Needs to work in all three languages (JavaScript, Python, C#)
+- Must support undoing: add, delete, toggle, and edit operations
+- Should keep a history of the last 20 actions
+- Needs keyboard shortcuts (Cmd/Ctrl+Z for undo, Cmd/Ctrl+Shift+Z for redo)
+- Must work with the existing database storage
+- The UI should show undo/redo buttons that are disabled when history is empty
 ```
 
 **✅ Observe:**
 - Copilot respects your constraints in the plan
-- The plan accounts for cross-language compatibility
-- Performance considerations are included
+- The plan accounts for the complexity of integrating with persistent storage
+- Performance and memory considerations are included
 
 ---
 
@@ -125,14 +136,19 @@ This is where Plan Mode really shines — turning plans into reality.
 
 ### Task 3.1: Execute a Plan Step by Step
 
-1. First, create a plan in Plan Mode:
+1. First, create a plan in Plan Mode for the categories feature you designed in Exercise 1:
 
 ```
-Plan an "export to JSON" feature for the Todo app:
-- Export all todos to a JSON file
-- Export only filtered todos (by status, category, or date range)
-- Include metadata (export date, total count)
-- Format the JSON for readability
+Let's plan the implementation of the categories feature we discussed earlier.
+Each todo gets a simple category string. I need:
+- Model changes to add a category field
+- A way to manage the list of available categories
+- UI controls: a category dropdown when adding/editing a todo,
+  and a category filter in the sidebar or filter bar
+- Update statistics to show breakdown by category
+- Make sure search still works with categories
+
+Create a step-by-step implementation plan.
 ```
 
 2. Review the plan. When you're satisfied, ask:
@@ -157,8 +173,9 @@ Step 1 looks good. Let's move to step 2.
 After implementing a few steps, change direction:
 
 ```
-Actually, I also want to support CSV export. Update the remaining plan to include
-CSV alongside JSON, and share the common filtering logic between them.
+Actually, I also want each category to have a color associated with it.
+Todos should show a colored dot or badge for their category.
+Update the remaining plan to include color coding.
 ```
 
 **✅ Observe:**
@@ -170,26 +187,30 @@ CSV alongside JSON, and share the common filtering logic between them.
 
 ## Exercise 4: Planning Complex Refactoring
 
+Your app has grown significantly through Labs 01-03. Time to clean it up!
+
 ### Task 4.1: Plan a Code Reorganization
 
 ```
-The Todo app code is getting complex. Plan a refactoring to separate concerns:
+The Todo app has grown through many iterations and the code could use some
+reorganization. Plan a refactoring to improve the codebase:
 1. Analyze the current code structure
 2. Propose a better organization following SOLID principles
 3. List all the changes needed with their order
-4. Identify any risks or things that might break
+4. Identify any risks or things that might break (tests, database, UI)
 5. Suggest how to verify nothing is broken after each change
 ```
 
-### Task 4.2: Plan a Pattern Migration
+### Task 4.2: Plan an Interface Extraction
 
 ```
-Plan converting the Todo app from a class-based approach to a more functional
-programming style:
-1. Identify which parts to convert
-2. Show the before/after for each major change
-3. Ensure backward compatibility
-4. List the order of changes to minimize breakage
+Several parts of our Todo app have similar patterns (storage, services,
+notifications). Plan extracting common interfaces:
+1. Identify repeated patterns across the codebase
+2. Propose shared interfaces or base classes
+3. Show which files would implement each interface
+4. Plan the migration order to minimize breakage
+5. Ensure all existing tests still pass after each step
 ```
 
 ---
@@ -199,50 +220,57 @@ programming style:
 ### Task 5.1: Plan Using Workspace Context
 
 ```
-@workspace Analyze the current Todo app structure and plan the following
-improvements:
-1. Add input validation everywhere it's missing
-2. Add proper error handling with custom error types
-3. Add logging for debugging
-What's the current state and what needs to change?
+@workspace Analyze the current Todo app and plan adding keyboard shortcuts
+throughout the application:
+1. What keyboard shortcuts would be most useful?
+2. How should we handle shortcut registration and conflict detection?
+3. Where in the existing code should this be integrated?
+4. Should we add a help overlay showing available shortcuts (press ?)
+5. How do we make sure shortcuts don't conflict with browser defaults?
 ```
+
+**✅ Observe:**
+- Copilot analyzes your actual codebase to make specific recommendations
+- The plan references real files and functions in your project
+- Suggestions are tailored to what already exists
 
 ### Task 5.2: Plan Based on Existing Code
 
 ```
-#file:todo.js Plan how to extend this file to support:
-1. Subtasks (nested todos)
-2. Progress tracking (percentage complete based on subtasks)
-3. Collapsible groups in the UI
+#file:todoList.js Plan how to add batch operations to the existing TodoList:
+1. Select multiple todos (checkboxes or shift-click)
+2. Batch actions: complete all, delete all, move to category, set priority
+3. A floating action bar that appears when items are selected
+4. "Select All" and "Deselect All" controls
 
-Show me the plan considering what's already implemented.
+Show me the plan considering what's already implemented in this file.
 ```
 
 ---
 
 ## Exercise 6: Build a Complete Feature with Plan Mode
 
-Let's put it all together by planning and building a **Notifications** feature.
+Let's put it all together by planning and building a **Subtasks** feature from scratch.
 
 ### Step 1: High-Level Plan
 
 ```
-I want to add a notifications feature to the Todo app. Notifications should
-fire when:
-- A todo is due within 24 hours
-- A todo is overdue
-- A todo is completed (as a confirmation)
+I want to add subtasks to the Todo app. Any todo should be able to have
+child todos nested under it.
 
 Create a high-level plan first. Don't include implementation details yet.
+Just outline the major phases and what each phase accomplishes.
 ```
 
 ### Step 2: Detailed Plan
 
 ```
 Now expand the plan with implementation details:
-- What models/classes are needed
-- What methods to add
-- How to integrate with existing code
+- What model changes are needed (how to represent parent-child relationships)
+- What service methods to add or modify
+- How the UI should render nested todos (indentation, collapse/expand)
+- How progress tracking works (parent shows X of Y subtasks complete)
+- How existing features interact (search, statistics, recurring, notifications)
 - How to test each component
 ```
 
@@ -251,16 +279,17 @@ Now expand the plan with implementation details:
 ```
 Before we start coding, are there any edge cases or potential issues with
 this plan? What about:
-- Timezone handling
-- Duplicate notifications
-- Performance with many todos
+- Maximum nesting depth (should we limit it?)
+- What happens when you delete a parent todo?
+- How do subtasks interact with recurring todos?
+- Performance with deeply nested structures
 ```
 
 ### Step 4: Implement
 
 ```
 The plan looks good. Let's start implementing step by step, beginning with
-the Notification model.
+the model changes.
 ```
 
 ### Step 5: Verify
@@ -272,16 +301,16 @@ they match our plan. Are there any gaps?
 
 ---
 
-## Exercise 7: Team Planning
+## Exercise 7: Architecture Planning
 
 ### Task 7.1: Plan Work Distribution
 
 ```
-I need to split the work on the Todo app across 3 developers. Plan how to
-divide these features so they can work in parallel with minimal conflicts:
-- User authentication
-- Todo sharing between users  
-- Activity log and audit trail
+I need to split upcoming work on the Todo app across 3 developers. Plan how to
+divide these new features so they can work in parallel with minimal conflicts:
+- Todo templates (save and reuse common todo structures)
+- Activity log / audit trail (track all changes to todos)
+- Drag & drop reordering (manual sort order for todos)
 
 Show the work breakdown and identify any dependencies between the streams.
 ```
@@ -289,15 +318,20 @@ Show the work breakdown and identify any dependencies between the streams.
 ### Task 7.2: Plan an Architecture Decision
 
 ```
-We need to decide how to store Todo data. Plan the pros and cons of:
-1. Local storage (current approach)
-2. SQLite database
-3. REST API with a backend server
+Our Todo app currently handles everything client-side. Plan the pros and
+cons of moving to a client-server architecture with a REST API:
 
-For each option, outline:
-- Implementation effort
+Consider our existing features:
+- Authentication (already has client-side auth)
+- SQLite database (already set up)
+- Export/Import
+- Notifications
+- Search
+
+For each option (keep client-side vs. add REST API), outline:
+- Migration effort for each existing feature
 - Scalability
-- Offline support
+- Multi-device support
 - Data safety
 ```
 
@@ -310,37 +344,39 @@ For each option, outline:
 ```
 Plan and implement a complete "Smart Lists" feature:
 - Automatically group todos by: Today, Upcoming, Overdue, Completed
-- Each smart list updates dynamically
-- Users can pin their favorite smart lists
-- Add custom smart lists with filter rules
+- Each smart list updates dynamically as todos change
+- Users can create custom smart lists with filter rules (e.g. "Work todos due this week")
+- Smart lists appear in a sidebar navigation
+- Users can pin their favorite smart lists to the top
 
 Create the plan first, iterate on it, then implement step by step.
 ```
 
-### Challenge 2: Migration Plan
+### Challenge 2: Todo Templates
 
 ```
-Plan a migration from in-memory storage to persistent storage:
-1. Analyze current data flow
-2. Design the storage interface
-3. Plan the migration steps
-4. Include rollback strategy
-5. Plan validation and testing
+Plan and implement a "Templates" feature:
+1. Users can save any todo (including subtasks) as a reusable template
+2. Templates have a name and optional description
+3. Creating a todo from a template pre-fills all fields
+4. Templates can be shared between users (integrate with existing auth)
+5. Add a template gallery to the UI
 
-Execute the plan after review.
+Plan the feature, refine through conversation, then implement.
 ```
 
-### Challenge 3: Plan a Testing Strategy
+### Challenge 3: Drag & Drop Reordering
 
 ```
-Plan a comprehensive testing strategy for the Todo app:
-1. Unit tests for all business logic
-2. Integration tests for storage
-3. Edge case coverage
-4. Test data management
-5. CI/CD integration
+Plan and implement drag & drop reordering for todos:
+1. Users can drag todos to reorder them manually
+2. Support drag & drop between categories
+3. Handle reordering within subtask groups
+4. Persist the custom order in the database
+5. Show visual feedback during drag (placeholder, drop target highlight)
+6. Support touch devices
 
-Create the plan, review it, then implement the test suite.
+Plan first, identify the tricky parts, then implement.
 ```
 
 ---
@@ -372,19 +408,21 @@ Create the plan, review it, then implement the test suite.
 ### Example of a Great Planning Prompt
 
 ```
-Plan a "recurring todos" feature for the Todo app.
+Plan a "subtasks" feature for the Todo app.
 
-Goal: Allow users to create todos that automatically repeat on a schedule.
+Goal: Allow any todo to have nested child todos that track progress.
 
 Requirements:
-- Support daily, weekly, and monthly recurrence
-- When a recurring todo is completed, auto-create the next occurrence
-- Allow users to skip an occurrence without breaking the pattern
-- Show upcoming occurrences in a calendar view
+- Todos can have unlimited subtasks (but limit nesting to 3 levels)
+- Parent todo shows progress: "3 of 5 subtasks complete"
+- Completing all subtasks auto-completes the parent
+- Subtasks can be collapsed/expanded in the UI
+- Deleting a parent deletes all subtasks
 
 Constraints:
-- Use only standard library (no external scheduling libraries)
-- Must work offline (no server-side scheduling)
+- Must work with the existing SQLite database schema
+- Must integrate with search (search should find subtasks too)
+- Statistics should count subtasks separately
 
 Please provide:
 1. A phased implementation plan
