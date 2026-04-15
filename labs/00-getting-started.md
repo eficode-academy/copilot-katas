@@ -61,9 +61,8 @@ npm install
 **Python:**
 ```bash
 cd starter-code/python
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
+uv init
+uv pip install -r requirements.txt
 ```
 
 **C#:**
@@ -82,7 +81,7 @@ npm start
 
 **Python:**
 ```bash
-python src/main.py
+uv run src/main.py
 # Open http://localhost:3000 in your browser
 ```
 

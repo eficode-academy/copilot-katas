@@ -28,12 +28,12 @@ Without MCP, Copilot can only see what's in your editor. With MCP, Copilot can:
 ### How MCP Works
 
 ```
-┌─────────────┐      MCP Protocol      ┌─────────────────┐
-│  GitHub      │ ◄──────────────────►   │   MCP Server    │
-│  Copilot     │    (stdio / HTTP)      │   (tools,        │
-│  (Client)    │                        │    resources,     │
-└─────────────┘                         │    prompts, apps) │
-                                        └─────────────────┘
+┌─────────────┐      MCP Protocol      ┌───────────────────┐
+│  GitHub     │ ◄──────────────────►   │   MCP Server      │
+│  Copilot    │    (stdio / HTTP)      │   (tools,         │
+│  (Client)   │                        │    resources,     │
+└─────────────┘                        │    prompts, apps) │
+                                       └───────────────────┘
 ```
 
 1. **MCP Client** — GitHub Copilot in VS Code acts as the client
@@ -87,7 +87,7 @@ The easiest way to add MCP servers is through the built-in gallery in VS Code.
 Install the **Playwright** MCP server to give Copilot browser capabilities:
 
 1. In the Extensions view, search for `@mcp playwright`
-2. Select **Install** to install it in your user profile
+2. Select **Install** to install it in your workspace
 3. When prompted, **confirm that you trust the server** to start it
 4. VS Code discovers the server's tools and makes them available in chat
 
