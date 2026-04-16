@@ -5,15 +5,27 @@ A self-contained R project for the **R Data Analysis** lab exercise.
 ## Prerequisites
 
 - R 4.2 or later ([Download](https://cran.r-project.org/))
-- RStudio (recommended) or VS Code with the R extension
+- VS Code with the [R extension](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r)
 
 ## Installing Packages
 
-Open an R console and run:
+Open an R console in your terminal and install the required packages:
+
+```bash
+# Start the R console
+R
+```
 
 ```r
-install.packages(c("dplyr", "ggplot2", "lubridate", "readr"))
+# Inside the R console, run:
+install.packages(c("dplyr", "ggplot2", "lubridate", "readr", "forecast"))
+
+# When done, quit the R console
+q()
 ```
+
+> **Tip:** Type `R` in your terminal to start an interactive R session, and
+> `q()` (or press `Ctrl+D`) to exit it.
 
 ## Running the Analysis
 
@@ -23,7 +35,8 @@ From the terminal (from this directory):
 Rscript src/analysis.R
 ```
 
-Or open `src/analysis.R` in RStudio and run sections interactively.
+Or open `src/analysis.R` in VS Code and run sections interactively using the
+R extension.
 
 ## Project Structure
 

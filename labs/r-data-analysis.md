@@ -31,14 +31,24 @@ example is grounded in data analysis rather than application development.
 ## Prerequisites
 
 1. R 4.2 or later ([CRAN](https://cran.r-project.org/))
-2. RStudio **or** VS Code with the
+2. VS Code with the
    [R extension](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r)
 3. GitHub Copilot Chat extension installed and activated
-4. Required packages (run once in an R console):
+4. Required packages – open an R console in your terminal and install them:
 
-```r
-install.packages(c("dplyr", "ggplot2", "lubridate", "readr"))
+```bash
+# Start the R console
+R
+
+# Then inside the R console, run:
+install.packages(c("dplyr", "ggplot2", "lubridate", "readr", "forecast"))
+
+# When done, quit the R console
+q()
 ```
+
+> **Tip:** Type `R` in your terminal to start an interactive R session, and
+> `q()` (or press `Ctrl+D`) to exit it.
 
 ## Setting Up
 
@@ -68,7 +78,7 @@ Type the following comment and press **Enter**:
 2. Wait for Copilot's inline suggestion (ghost text)
 3. Press `Tab` to accept, or `Esc` to dismiss and try a different approach
 4. Observe whether Copilot chooses `read.csv()` or `readr::read_csv()` – try
-   pressing `Alt+]` (Windows) to see alternative suggestions
+   pressing `Alt+]` (Windows/Linux) / `Option+]` (Mac) to see alternative suggestions
 
 ### Task 1.2: Explore the Data Structure
 
@@ -239,6 +249,9 @@ Observe how Copilot generates roxygen2-style documentation.
 
 ### Task 3.3: Context References
 
+Use `#file:` to reference a specific file as context in Copilot Chat. Start
+typing `#` and select the file from the autocomplete list.
+
 ```
 #file:data_processor.R Does this file handle the case where the 
 discount column contains values outside the range 0–1?
@@ -274,9 +287,12 @@ Copilot should suggest something involving `lubridate::floor_date` or
 ### Task 4.3: Top Products
 
 ```r
-# Horizontal bar chart of the top 5 products by total revenue
+# Horizontal bar chart of the top products by total revenue
 # Flip coordinates so product names are on the y-axis
 ```
+
+> **Note:** The sample dataset contains only 4 unique products, so all
+> products will appear in the chart.
 
 ### Task 4.4: NES – Pattern Recognition
 
@@ -304,12 +320,18 @@ Create a complete R script called src/report.R that:
 1. Loads the data using readr::read_csv
 2. Cleans it (parse dates, add revenue column, drop NAs)
 3. Prints a summary table: total revenue and units sold per region
-4. Prints the top 5 products by revenue
-5. Saves a ggplot2 bar chart of revenue by region as output/revenue_by_region.png
-6. Prints a simple linear regression of revenue ~ units_sold and shows the R²
+4. Prints the top products by revenue
+5. Creates the output/ directory if it doesn't exist
+6. Saves a ggplot2 bar chart of revenue by region as output/revenue_by_region.png
+7. Prints a simple linear regression of revenue ~ units_sold and shows the R²
 
 Use dplyr and ggplot2. Add comments explaining each step.
 ```
+
+> **Note:** You may notice a very low R² for the `revenue ~ units_sold` model.
+> This is expected – revenue also depends on `unit_price`, which varies widely
+> across products. Try asking Copilot Chat why the R² is low and how to improve
+> the model (e.g., by adding `unit_price` as a predictor).
 
 **Observe Agent Mode:**
 - Copilot creates the file autonomously
@@ -354,13 +376,13 @@ Compare how vague vs. specific comments affect suggestions:
 
 **Specific:**
 ```r
-# Filter to keep only Electronics category rows where revenue > 500
+# Filter to keep only Electronics category rows where revenue > 1000
 ```
 
 **Very specific:**
 ```r
 # Filter the sales data frame to rows where category equals "Electronics"
-# and revenue is greater than 500, returning a new data frame
+# and revenue is greater than 1000, returning a new data frame
 ```
 
 ### Task 6.3: Statistical Modelling
@@ -407,6 +429,10 @@ Implement the suggestion and test it with the sample data.
 
 ### Challenge 3: Time-Series Forecasting
 
+> **Note:** This challenge requires the `forecast` package which was included
+> in the prerequisites install command. If you skipped it, run:
+> `install.packages("forecast")` first.
+
 ```
 Using the monthly revenue data I have, show me how to fit a simple 
 exponential smoothing model with the forecast package and plot 
@@ -428,11 +454,3 @@ a 3-month ahead forecast
 
 ---
 
-## What's Next?
-
-You've explored the core Copilot features through a data-analysis lens. For
-deeper customisation, see:
-
-- [Lab 06 – Custom Instructions](06-instructions.md) – teach Copilot your team's R conventions
-- [Lab 07 – Prompt Files](07-prompts.md) – create reusable analysis templates
-- [Lab 09 – Custom Skills](09-skills.md) – encode domain expertise (e.g., your company's data schemas)

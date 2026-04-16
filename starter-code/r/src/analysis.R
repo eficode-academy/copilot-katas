@@ -7,7 +7,6 @@
 #
 # To run:
 #   Rscript src/analysis.R
-#   or open in RStudio and run line by line
 #
 # Exercises:
 #   1. Load and explore sales data
