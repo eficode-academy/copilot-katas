@@ -1,0 +1,19 @@
+{
+  "name": "copilot-katas",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-dotnettools.csharp",
+        "ms-python.python"
+      ]
+    }
+  },
+  "postCreateCommand": "bash -lc 'set -e; cd starter-code/javascript && npm install; cd ../recipe-api && npm install; cd ../python && pip3 install -r requirements.txt; cd ../csharp && dotnet restore TodoApp.csproj'",
+  "remoteUser": "vscode"
+}
