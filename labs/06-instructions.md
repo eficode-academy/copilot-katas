@@ -32,7 +32,7 @@ There are two main types:
 | Type | File | Scope | Applied |
 |------|------|-------|---------|
 | **Repository instructions** | `.github/copilot-instructions.md` | Entire workspace | Always — automatically included in every request |
-| **File-scoped instructions** | `*.instructions.md` | Files matching a glob pattern | Automatically, when relevant files are open/referenced |
+| **File-scoped instructions** | `.github/instructions/*.instructions.md` | Files matching a glob pattern | Automatically, when relevant files are open/referenced |
 
 ### How Instructions Are Loaded
 
@@ -64,7 +64,7 @@ npm install
 
 ### Task 1.1: Create a Repo-Level Instructions File
 
-Create the file `.github/copilot-instructions.md` in the **recipe-api** project:
+Create the file `.github/copilot-instructions.md` inside the `starter-code/recipe-api` project (so the path is `starter-code/recipe-api/.github/copilot-instructions.md`):
 
 ```markdown
 # Project Instructions for GitHub Copilot
@@ -244,6 +244,8 @@ When writing route handlers:
 ```
 
 ### Task 3.3: Verify File-Scoped Instructions
+
+> The Recipe API starter doesn't ship with Vitest installed. The point of this task is to see Copilot _follow_ the instructions when generating test code; you don't need to install Vitest or actually run the tests.
 
 1. Open a file at `src/routes/recipes.js` and ask Copilot to add a new endpoint — observe the JSDoc comments and `next(error)` usage from the routes instructions
 2. Ask Copilot to write a test for it — observe Vitest and the "should ... when ..." format from the testing instructions
@@ -435,7 +437,7 @@ List all violations of our coding standards and suggest fixes for each.
 |---------|----------|
 | **Repo-level instructions** | `.github/copilot-instructions.md` — always applied to every request |
 | **File-scoped instructions** | `*.instructions.md` files with `applyTo` glob patterns in `.github/instructions/` |
-| **Priority order** | Personal > Repository > Organization-level |
+| **Priority order** | Personal > Repository > File-scoped > Organization-level |
 | **Generate with `/init`** | Quickly bootstrap instructions from your project |
 | **Diagnostics** | Right-click in Chat → Diagnostics to see loaded instructions |
 | **Keep them focused** | Concise, clear, and non-contradictory for best results |

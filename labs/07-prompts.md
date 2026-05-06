@@ -57,18 +57,22 @@ Your prompt instructions here...
 
 ### Setting Up for This Lab
 
-Make sure the Recipe API project is ready with the instructions file from Lab 06:
+**Prerequisites:** Lab 06 (Custom Instructions) completed — this lab builds on the Recipe API project and assumes the instructions file from Lab 06 is in place.
+
+Make sure the Recipe API project is ready:
 
 ```bash
 cd starter-code/recipe-api
 npm install
 ```
 
-Create the prompts directory:
+Create the prompts directory (run from inside `starter-code/recipe-api/`):
 
 ```bash
 mkdir -p .github/prompts
 ```
+
+> **Note:** All `.prompt.md` files in this lab live under `starter-code/recipe-api/.github/prompts/`. Relative file-reference paths in prompts are resolved from the prompt file's location.
 
 ---
 
@@ -157,11 +161,13 @@ Prompt files support variables that reference context from your workspace.
 
 | Variable | Description |
 |----------|-------------|
-| `${file}` | The active editor file |
+| `${file}` | Path of the active editor file (its content is added as chat context) |
 | `${selection}` | The currently selected text in the editor |
 | `${selectedText}` | Same as `${selection}` |
-| `${workspaceFolder}` | The root folder of the workspace |
+| `${workspaceFolder}` | The absolute path to the root folder of the workspace |
+| `${workspaceFolderBasename}` | The name (basename) of the workspace folder |
 | `${input:variableName}` | Prompts the user for free-text input when the prompt runs |
+| `${input:variableName:placeholder}` | Same as above, with placeholder text in the input box |
 
 You can also reference other files using Markdown links: `[filename](path/to/file.js)`
 
@@ -434,6 +440,8 @@ Dinners" or "Holiday Baking") and add/remove recipes to/from them.
 
 ### Task 4.1: Database Migration Prompt
 
+> **Note:** The Recipe API uses an in-memory store (no real database). This task demonstrates how a migration prompt would look for a project that does use one — the prompt itself is the deliverable, not a working migration.
+
 Create `.github/prompts/db-migration.prompt.md`:
 
 ````markdown
@@ -547,7 +555,7 @@ Document all endpoints in the active file.
 
 ---
 
-## Exercise 5: Prompt Chaining and Organization
+## Exercise 5: Prompt Chaining and Organization _(optional / stretch)_
 
 ### Task 5.1: Prompt Chaining
 
@@ -631,16 +639,16 @@ In addition to typing `/` in chat, you can run prompts from:
 
 ---
 
-## Exercise 6: Advanced Prompt Techniques
+## Exercise 6: Advanced Prompt Techniques _(optional / stretch)_
 
 ### Task 6.1: Prompt with MCP Tools
 
-If you set up MCP servers in Lab 05, you can reference them in prompt tools:
+If you set up MCP servers in Lab 05, you can list their tools alongside the built-in ones in `tools`:
 
 ````markdown
 ---
 description: Fetch and analyze a web resource
-tools: ['fetch/*']
+tools: ['codebase', 'fetch']
 ---
 
 # Analyze Web Resource
@@ -648,17 +656,16 @@ tools: ['fetch/*']
 Fetch ${input:url} and analyze its structure.
 ````
 
-The `fetch/*` syntax includes all tools from the `fetch` MCP server.
+Tool names match what you see in the tool picker (`Configure Tools…` from the chat input). MCP server tools typically appear under their server name — pick the specific tools your prompt needs.
 
 ### Task 6.2: Team Prompt Standards
 
-Create a `_README.md` in your prompts directory explaining each prompt:
+A small `_README.md` in your prompts directory makes the library discoverable for teammates. Ask Copilot Chat directly (no slash command — `/add-feature` is for app code, not docs):
 
 ```
-/add-feature
-
-Create a _README.md file in .github/prompts/ that documents all our prompt
-files with descriptions and example usage for each one.
+Read every .prompt.md file under .github/prompts/ and write a _README.md
+in that directory listing each prompt with a one-line description and
+an example invocation.
 ```
 
 ### Task 6.3: Prompt Customization on the Fly
@@ -676,7 +683,7 @@ HTTP request/response cycle using supertest.
 
 ---
 
-## Challenges
+## Challenges _(optional)_
 
 ### Challenge 1: Full Workflow Prompt
 
@@ -722,7 +729,7 @@ logging, and request validation. Save it in .github/prompts/.
 |-------|-------------|
 | `description` | Brief description shown in the prompt picker |
 | `agent` | Which agent to use: `ask`, `agent`, `plan`, or a custom agent name |
-| `model` | AI model to use (e.g., `GPT-4.1`, `Claude Sonnet 4`) |
+| `model` | AI model to use — match the name shown in your model picker (e.g., `GPT-4.1`, `Claude Sonnet 4.5`) |
 | `tools` | List of tools available to the prompt |
 | `argument-hint` | Hint text shown in the chat input when the prompt is selected |
 

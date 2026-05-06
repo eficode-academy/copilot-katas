@@ -13,7 +13,7 @@ By the end of this lab, you will be able to:
 
 ## Introduction
 
-**Skills** give Copilot deep domain knowledge for specific tasks. While instructions (Lab 06) give general guidelines and agents (Lab 08) define personas, skills provide focused expertise on a particular domain — like a team member who is the go-to expert on a specific topic.
+**Skills** give Copilot deep domain knowledge for specific tasks. While instructions (Lab 06) give general guidelines, prompt files (Lab 07) define reusable tasks, and agents (Lab 08) define personas, skills provide focused expertise on a particular domain — like a team member who is the go-to expert on a specific topic.
 
 ### Why Skills?
 
@@ -44,7 +44,7 @@ Skills live inside named directories with a `SKILL.md` file:
     │   ├── conversion-tables.json
     │   └── examples/
     │       └── imperial-to-metric.md
-    └── api-design/
+    └── api-patterns/
         ├── SKILL.md
         ├── templates/
         │   └── endpoint-template.js
@@ -234,6 +234,8 @@ You are an expert at converting measurement units for recipes.
 
 Reference the conversion table at [tables/conversions.json](tables/conversions.json)
 for exact conversion factors.
+
+> Any reference Copilot can resolve — a Markdown link, a relative path, even a plain mention like `tables/conversions.json` — can trigger Level-3 loading of that resource when the skill is in use.
 
 ## Volume Conversions
 
@@ -443,9 +445,11 @@ GET /api/recipes?category=dinner&maxTime=30
 ```
 ````
 
-### Task 3.2: Internal-Only Skills
+### Task 3.2a: User-Only Skill (`disable-model-invocation`)
 
-Use `disable-model-invocation: true` to make a skill that users can request but Copilot won't automatically discover:
+A skill the user can request explicitly via `/skills`, but Copilot won't auto-load. Useful for "expensive" or noisy skills you only want to pull in deliberately.
+
+Create `.github/skills/debug-helper/SKILL.md`:
 
 ````markdown
 ---
@@ -453,9 +457,19 @@ name: debug-helper
 description: Debugging utilities and common issue resolutions
 disable-model-invocation: true
 ---
+
+# Debug Helper
+
+(Your debugging notes here.)
 ````
 
-Or use `user-invokable: false` to hide from users but allow agents to use it:
+**Test it:** ask Copilot a debugging question — the skill should _not_ load on its own. Then run `/skills` and explicitly enable it; ask the same question and watch the skill load.
+
+### Task 3.2b: Agent-Only Skill (`user-invokable: false`)
+
+The opposite: hidden from the user picker, but available for agents (and Copilot itself) to discover.
+
+Create `.github/skills/internal-formatter/SKILL.md`:
 
 ````markdown
 ---
@@ -463,7 +477,13 @@ name: internal-formatter
 description: Code formatting rules used by automation agents
 user-invokable: false
 ---
+
+# Internal Formatter
+
+(Your formatting rules here.)
 ````
+
+**Test it:** run `/skills` — the skill should not appear in the picker. Ask Copilot to format a snippet and observe whether it loads automatically based on the description.
 
 ### Visibility Summary
 
@@ -504,11 +524,11 @@ A good description answers:
 
 ### Task 4.2: Practice Writing Descriptions
 
-Write descriptions for these hypothetical skills and check if Copilot correctly discovers them:
+Write descriptions for these recipe-domain skills and check if Copilot correctly discovers them when you ask a related question:
 
-1. A skill for database migration patterns
-2. A skill for error logging and monitoring
-3. A skill for authentication and authorization
+1. A skill for **recipe search and filtering** (by ingredient, time, dietary tag)
+2. A skill for **recipe image handling** (upload, resize, format conversion)
+3. A skill for **nutrition calculations** (per-ingredient and per-recipe totals)
 
 ### YAML Frontmatter Rules
 

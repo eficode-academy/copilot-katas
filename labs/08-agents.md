@@ -10,16 +10,25 @@ By the end of this lab, you will be able to:
 - Switch between agents using the agents dropdown
 - Use the `/agents` command and diagnostics to manage agents
 
+## Prerequisites
+
+This lab builds on Labs 00–07. You should already be comfortable with Chat modes (Lab 02), Agent Mode (Lab 03), Custom Instructions (Lab 06), and Prompt Files (Lab 07).
+
 ## Introduction
 
-**Custom Agents** let you create specialized AI personas in Copilot Chat that are tuned for specific workflows. While the built-in agents (Agent, Ask, Plan) are generalists, custom agents are experts at particular tasks — each with their own instructions, tools, and behavior.
+**Custom Agents** let you create specialized AI personas in Copilot Chat that are tuned for specific workflows. While the built-in chat modes (Ask, Agent, Plan) are generalists, custom agents are experts at particular tasks — each with their own instructions, tools, and behavior.
+
+> **Heads up: Custom Agents ≠ Agent Mode.**
+> [Lab 03 - Agent Mode](03-agent-mode.md) covered the built-in **Agent Mode** — a chat mode that autonomously plans and executes multi-step tasks using all available tools.
+> **Custom Agents** (this lab) are user-defined personas you author in `.agent.md` files. Each one has its own system prompt, curated tools, and (optionally) a chosen model. You select them from the agents dropdown at the top of the Chat view, the same dropdown that holds the built-in modes.
+> In short: Agent Mode is a built-in chat mode; Custom Agents are configurations you create yourself.
 
 ### Why Custom Agents?
 
 Different tasks require different capabilities:
 
-| Built-in Agents | Custom Agents |
-|-----------------|---------------|
+| Built-in Modes (Ask / Agent / Plan) | Custom Agents |
+|-------------------------------------|---------------|
 | General-purpose | Domain-specific |
 | Default system prompt | Your custom instructions |
 | All tools available | Curated tool selection |
@@ -43,7 +52,7 @@ Custom agents are defined as `.agent.md` files and stored in your workspace or u
     └── ...                        ← prompt files (Lab 07)
 ```
 
-Custom agents appear in the **agents dropdown** at the top of the Chat view, alongside the built-in agents. Select one to switch to that agent.
+Custom agents appear in the **agents dropdown** at the top of the Chat view, alongside the built-in chat modes (Ask, Agent, Plan). Select one to switch to that agent.
 
 ### Agent File Structure
 
@@ -167,6 +176,8 @@ Type `/agents` in the chat input to quickly open the **Configure Custom Agents**
 ---
 
 ## Exercise 2: A Testing Agent
+
+> The Recipe API starter doesn't ship with a test framework installed. The agent below will assume Vitest — when it tries to run tests, it'll likely propose `npm install -D vitest` first. Approve that or skip the run step; the goal here is to see the agent _reason about_ tests, not to land green CI.
 
 ### Task 2.1: Create a Test Writer Agent
 
@@ -585,7 +596,7 @@ Create paired agents where one can only read/plan and the other can only write:
 | `handoffs` | List of suggested transitions to other agents |
 | `user-invokable` | Whether the agent appears in the dropdown (default: `true`) |
 | `disable-model-invocation` | Prevent use as a subagent (default: `false`) |
-| `argument-hint` | Hint text shown in the chat input |
+| `argument-hint` | Placeholder text shown in the chat input when this agent is selected (e.g., `argument-hint: <feature description>`) |
 
 ### Design Principles
 
