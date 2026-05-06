@@ -52,22 +52,22 @@ Navigate to the starter code for your chosen language:
 
 ### Step 2: Install Dependencies
 
+From the directory you `cd`'d into in Step 1, run:
+
 **JavaScript:**
 ```bash
-cd starter-code/javascript
 npm install
 ```
 
 **Python:**
 ```bash
-cd starter-code/python
-uv init
+# Create a virtual environment and install dependencies
+uv venv
 uv pip install -r requirements.txt
 ```
 
 **C#:**
 ```bash
-cd starter-code/csharp
 dotnet restore
 ```
 
@@ -99,19 +99,21 @@ Let's make sure Copilot is functioning correctly.
 
 ### Task 1: Test Inline Completion
 
-1. Open the main source file for your language:
-   - JavaScript: `src/app.js`
-   - Python: `src/todo.py`
-   - C#: `src/Todo.cs`
+We don't want to pollute the starter code with throwaway scratch work, so create a temporary file:
 
-2. Type the following comment and press Enter:
-   ```
-   // Function to add two numbers
-   ```
+- JavaScript: `src/scratch.js`
+- Python: `src/scratch.py`
+- C#: `src/Scratch.cs`
 
-3. Wait a moment. Copilot should suggest a function implementation.
+Then type the following comment and press Enter (use `#` instead of `//` in Python):
 
-4. Press `Tab` to accept the suggestion, or `Esc` to dismiss it.
+```
+// Function to add two numbers
+```
+
+Wait a moment. Copilot should suggest a function implementation. Press `Tab` to accept the suggestion, or `Esc` to dismiss it.
+
+When you're done, delete the scratch file — the next labs build on the unmodified starter.
 
 **✅ Success Criteria:** You see a function suggestion appear as ghost text.
 
@@ -139,7 +141,7 @@ Let's make sure Copilot is functioning correctly.
    - `GitHub Copilot: Enable` - Toggle Copilot on/off
    - `GitHub Copilot: Inline Suggest Enable` - Toggle inline suggestions
 
-💡 **Tip**: You can quickly toggle Copilot in-line suggestions on/off by clicking the Copilot icon in the status bar in the bottom right corner.
+💡 **Tip**: You can quickly toggle Copilot inline suggestions on/off by clicking the Copilot icon in the status bar in the bottom right corner.
 
 ## Keyboard Shortcuts Reference
 
@@ -147,8 +149,8 @@ Let's make sure Copilot is functioning correctly.
 |--------|-----|---------------|
 | Accept suggestion | `Tab` | `Tab` |
 | Dismiss suggestion | `Esc` | `Esc` |
-| See next suggestion | `-` | `Alt+]` |
-| See previous suggestion | `-` | `Alt+[` |
+| See next suggestion | `Option+]` | `Alt+]` |
+| See previous suggestion | `Option+[` | `Alt+[` |
 | Open Copilot Chat | `Cmd+Shift+I` | `Ctrl+Shift+I` |
 | Inline Chat | `Cmd+I` | `Ctrl+I` |
 | Show all suggestions | `Ctrl+Enter` | `Ctrl+Enter` |

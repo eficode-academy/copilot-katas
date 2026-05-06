@@ -10,9 +10,24 @@ By the end of this lab, you will be able to:
 - Use tools and terminal commands through the agent
 - Understand when Agent Mode is the right choice
 
+## Prerequisites
+
+- You have completed [Lab 00](00-getting-started.md), [Lab 01](01-inline-completion.md), and [Lab 02](02-chat-window.md).
+- Your Todo App starter code (JavaScript, Python, or C#) is open in VS Code.
+- You can open Copilot Chat and switch chat modes.
+
 ## Introduction
 
-Agent Mode is the most autonomous mode of GitHub Copilot. Unlike Ask Mode where you only get answers, Agent Mode:
+In Lab 02 you used **Ask Mode** — a read-only conversation where Copilot answers questions and proposes code, but you copy-paste and apply changes yourself. **Agent Mode** is different: it can read files, write files, and run terminal commands on your behalf to complete a task end-to-end.
+
+| | Ask Mode (Lab 02) | Agent Mode (this lab) |
+|---|---|---|
+| **Reads files** | Only what you reference | Explores the workspace as needed |
+| **Edits files** | Suggests code you apply manually | Writes and edits files directly |
+| **Runs commands** | No | Yes (with your approval) |
+| **Best for** | Explanations, single-file edits | Multi-file features, test suites, setup |
+
+Agent Mode:
 
 - **Plans and executes** multi-step tasks independently
 - **Creates new files** when needed
@@ -36,6 +51,8 @@ When in Agent Mode, you'll see:
 - Tool usage notifications (file reads, terminal commands)
 - File creation proposals
 
+> **⚠️ Heads up — review before approving.** Agent Mode will ask before running terminal commands and before applying file edits in many cases. **Read the proposed command and the proposed diff before clicking Allow / Keep.** Don't blindly approve `npm install`, package upgrades, or anything that touches files outside the project. The full review checklist is at the end of this lab under [Reviewing Agent Work](#reviewing-agent-work).
+
 ---
 
 ## Exercise 1: Build the Frontend and Add Features
@@ -48,14 +65,14 @@ Switch to **Agent Mode** and give this prompt:
 
 ```
 Build a working frontend for the Todo app:
-2. Create a new frontend module (e.g. src/ui.js or equivalent) that connects the TodoList class to the DOM
-3. Implement these interactions:
+1. Create a new frontend module (e.g. src/ui.js or equivalent) that connects the TodoList class to the DOM
+2. Implement these interactions:
    - Add a new todo from the input field (press Enter or click Add)
    - Render the todo list showing checkbox, text, and delete button
    - Toggle a todo's completed status by clicking its checkbox
    - Delete a todo with the delete button
    - Filter todos by All / Active / Completed using the filter buttons
-4. Start the server and verify it works in the browser
+3. Start the server and verify it works in the browser
 ```
 
 **✅ Observe:**
@@ -65,6 +82,8 @@ Build a working frontend for the Todo app:
 - Agent may run the server to verify — you finally see your Todo app come alive!
 
 > **💡 Tip:** After this task, open `http://localhost:3000` and test adding, completing, and deleting todos. This is the foundation all later UI tasks build on.
+>
+> If the agent isn't sure how to start the server, the commands are: `npm start` (JavaScript), `python src/main.py` (Python), or `dotnet run` (C#).
 
 ### Task 1.2: Create a Statistics Module
 
@@ -150,11 +169,15 @@ Create a complete unit test suite for the TodoList class:
 ### Task 2.2: Test Coverage for Specific Features
 
 ```
-Add tests specifically for:
+If the codebase has priority and/or due date support, add tests for:
 1. The priority feature (filtering and sorting by priority)
 2. The due date feature (overdue detection, today's todos)
+
+Then add tests for:
 3. Edge cases like null/undefined handling
 4. Concurrent access scenarios (if applicable)
+
+If priority or due dates aren't implemented yet, ask Agent Mode to add them first, then add the tests.
 ```
 
 ### Task 2.3: Run and Fix Tests
@@ -173,7 +196,11 @@ Run the tests and fix any failures. Then add any missing test cases you identify
 
 ## Exercise 3: Multi-Step Autonomous Tasks
 
+> The exercises below are independent — pick the ones that interest you rather than trying to do all of them in one session. Each assumes Exercise 1 (the basic todo features) is in place.
+
 ### Task 3.1: Add Authentication
+
+> **⚠️ Heads up — this is a learning exercise, not production-grade auth.** "Roll-your-own auth, no libraries" is exactly what you should _not_ do in a real app. The point here is to watch the agent juggle a multi-step, multi-file task. Read every diff before keeping it, and don't deploy any of this anywhere.
 
 This is a complex, multi-step task:
 
@@ -450,7 +477,7 @@ Please also:
 
 ## Congratulations! 🎉
 
-You've completed the Agent Mode lab! Now let's learn to plan before we build.
+You've completed the Agent Mode lab! You've seen how Copilot can build features, write tests, and run commands largely on its own. Next, you'll learn to plan complex changes *before* turning the agent loose on them.
 
 👉 Continue to [Lab 04 - Plan Mode](04-plan-mode.md)
 
