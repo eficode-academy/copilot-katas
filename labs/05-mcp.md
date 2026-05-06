@@ -1,5 +1,7 @@
 # Lab 05 - MCP (Model Context Protocol)
 
+> **Welcome to Part 2.** Labs 00–04 built up a Todo app to teach the core Copilot features. From here on, we switch to a new project — a small **Recipe Book API** in `starter-code/recipe-api/` — to explore advanced customization (MCP, custom instructions, prompt files, agents, and skills). A backend project gives us more interesting surface area for these features. The Todo app is done; you won't need it again.
+
 ## Learning Goals
 
 By the end of this lab, you will be able to:
@@ -55,15 +57,16 @@ MCP servers can provide more than just tools:
 
 ### Setting Up for This Lab
 
-Make sure you have the Recipe API project ready:
+Make sure you have the Recipe API project ready. Open VS Code in the `starter-code/recipe-api` folder, then in a terminal run:
 
 ```bash
-cd starter-code/recipe-api
 npm install
 npm start
 ```
 
-Verify the API is running at `http://localhost:4000`.
+Leave this terminal running and verify the API is reachable at `http://localhost:4000`. Several exercises below depend on it.
+
+> **Note:** Some MCP servers in this lab are distributed via [`uv`](https://docs.astral.sh/uv/) (the `uvx` command) or `npx`. The dev container ships with both. If you're running locally and don't have `uv`, install it first or substitute a server distributed via `npx`.
 
 ---
 
@@ -95,7 +98,7 @@ Install the **Playwright** MCP server to give Copilot browser capabilities:
 
 ### Task 1.3: Use the Installed MCP Server
 
-Open the Chat view (`Ctrl+Cmd+I` / `Ctrl+Shift+I`) in Agent Mode and try:
+Open the Chat view (`Cmd+Shift+I` / `Ctrl+Shift+I`) in Agent Mode and try:
 
 ```
 Go to http://localhost:4000 and take a screenshot of the page.
@@ -144,8 +147,8 @@ Create or edit `.vscode/mcp.json` in the **recipe-api** project:
   "servers": {
     "fetch": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-fetch@latest"]
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
     }
   }
 }
@@ -170,8 +173,8 @@ Add a remote MCP server that communicates over HTTP:
   "servers": {
     "fetch": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-fetch@latest"]
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
     },
     "github": {
       "type": "http",
@@ -436,12 +439,13 @@ Set up a configuration with multiple servers:
   "servers": {
     "fetch": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-fetch@latest"]
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
     },
     "playwright": {
+      "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@microsoft/mcp-server-playwright"]
+      "args": ["-y", "@playwright/mcp@latest"]
     },
     "github": {
       "type": "http",
@@ -473,7 +477,9 @@ to http://localhost:4000/api/recipes with the mapped data.
 
 ---
 
-## Exercise 9: Build a Custom MCP Server (Bonus)
+## Exercise 9: Build a Custom MCP Server (Bonus, Optional)
+
+> Skip this if you're short on time — the rest of the lab and the Challenges below don't depend on it. Come back when you want to write your own MCP server.
 
 ### Task 9.1: Plan a Custom Server
 
