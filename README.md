@@ -8,6 +8,16 @@ Welcome to the **GitHub Copilot Katas**! This hands-on workshop will take you fr
 
 Whether you're new to AI pair programming or looking to level up your skills, this workshop is designed to help you get the most out of GitHub Copilot.
 
+## ⚡ Quick Start
+
+```bash
+git clone https://github.com/EficodeDemoOrg/copilot-katas.git
+cd copilot-katas
+code .            # then: Dev Containers: Reopen in Container (recommended)
+```
+
+Then open [Lab 00 - Getting Started](labs/00-getting-started.md) in VS Code and follow the steps.
+
 ## 🎯 What You'll Build
 
 Throughout this workshop, you'll work with two projects using GitHub Copilot as your AI pair programmer:
@@ -33,15 +43,25 @@ Before you begin, ensure you have:
 2. **GitHub Copilot Chat** extension installed
 3. A valid **GitHub Copilot subscription** (individual or organization)
 
-### Choose Your Language
+### Option A: Dev Container (recommended)
+
+This repo ships with a [Dev Container](.devcontainer/devcontainer.json) that pre-installs Node.js 20, Python 3, and the .NET 8 SDK, plus the Copilot extensions. To use it:
+
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop) and the **Dev Containers** extension in VS Code (or open the repo in [GitHub Codespaces](https://github.com/features/codespaces)).
+2. Open the repo in VS Code → run **Dev Containers: Reopen in Container**.
+3. The post-create step installs all starter-code dependencies for you.
+
+### Option B: Local install — Choose Your Language
 
 The first workshop supports multiple programming languages. Choose one:
 
 | Language | Requirements |
 |----------|-------------|
 | **JavaScript** | Node.js 18+ |
-| **Python** | Python 3.10+ |
+| **Python** | Python 3.10+ and [`uv`](https://docs.astral.sh/uv/) |
 | **C#** | .NET 8+ |
+
+Part 2 (Recipe API, Labs 05–09) requires **Node.js 18+** regardless of which language you chose for Part 1.
 
 ## 📚 Workshop Structure
 
@@ -144,6 +164,7 @@ copilot-katas/
 │   │   └── src/
 │   ├── csharp/              ← Todo App (Labs 00-04)
 │   │   ├── TodoApp.csproj
+│   │   ├── Program.cs
 │   │   └── src/
 │   └── recipe-api/          ← Recipe API (Labs 05-09)
 │       ├── package.json
@@ -151,6 +172,8 @@ copilot-katas/
 │       └── src/
 ├── trainer/
 │   └── GUIDE.md
+├── .devcontainer/           ← Dev Container config (Node, Python, .NET)
+├── .vscode/                 ← Build/debug tasks for the C# starter
 └── solutions/
     └── (reference implementations)
 ```
