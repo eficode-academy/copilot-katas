@@ -356,12 +356,16 @@ Use the patterns from [api routes](../src/routes/recipes.js)
 
 ```markdown
 ---
+name: api-builder
 description: Expert API developer for building endpoints
 tools: ['codebase', 'terminal', 'editFiles']
 model: GPT-4.1
+argument-hint: <feature description>
 ---
 You are an expert API developer...
 ```
+
+> `name` defaults to the filename if omitted. `argument-hint` shows in the agent picker as a placeholder.
 
 ### Handoffs (multi-agent workflows)
 
@@ -394,7 +398,7 @@ handoffs:
 │   ├── SKILL.md
 │   ├── tables/
 │   └── examples/
-└── api-design/
+└── api-patterns/
     └── SKILL.md
 ```
 

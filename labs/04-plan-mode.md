@@ -9,6 +9,14 @@ By the end of this lab, you will be able to:
 - Understand when to use Plan Mode vs. other modes
 - Combine planning with agent execution for large features
 
+## Prerequisites
+
+This lab builds directly on the Todo app you've grown across Labs 00–03. Before starting, make sure:
+
+- You've completed **Labs 00, 01, 02, and 03** (or have an equivalent Todo app with the frontend, statistics, search, authentication, database storage, and notifications features).
+- Your Todo app starter (`starter-code/javascript`, `starter-code/python`, or `starter-code/csharp`) is open in VS Code.
+- GitHub Copilot Chat is signed in and working.
+
 ## Introduction
 
 In the previous labs you've built a lot — a working Todo app with a frontend, statistics, search, authentication, database storage, notifications, and more. You did most of that by jumping straight into Agent Mode and letting Copilot figure it out.
@@ -22,6 +30,19 @@ Plan Mode takes a different approach. Instead of jumping straight into implement
 - **Execute the plan** step by step or hand it off to Agent Mode
 
 This is especially valuable as your codebase grows — which is exactly where you are now.
+
+### Plan Mode vs. Agent Mode
+
+These two modes complement each other:
+
+| | Plan Mode | Agent Mode |
+|---|-----------|------------|
+| **What it does** | Designs an approach, no code edits | Edits files, runs commands, autonomously executes |
+| **Best for** | Thinking before doing — complex features, refactors, architecture | Doing — multi-file features once the approach is clear |
+| **Output** | A structured plan you can review and refine | Concrete code changes |
+| **Pace** | You drive the conversation step by step | Copilot drives until the goal is met |
+
+A common workflow: **plan in Plan Mode, then hand the plan to Agent Mode for execution.**
 
 ### Accessing Plan Mode
 
@@ -236,8 +257,14 @@ throughout the application:
 
 ### Task 5.2: Plan Based on Existing Code
 
+Reference the TodoList file in your language using `#file:`:
+
+- JavaScript: `#file:todoList.js`
+- Python: `#file:todo_list.py`
+- C#: `#file:TodoList.cs`
+
 ```
-#file:todoList.js Plan how to add batch operations to the existing TodoList:
+#file:<your TodoList file> Plan how to add batch operations to the existing TodoList:
 1. Select multiple todos (checkboxes or shift-click)
 2. Batch actions: complete all, delete all, move to category, set priority
 3. A floating action bar that appears when items are selected
@@ -466,7 +493,9 @@ You've completed Part 1 of the GitHub Copilot Katas!
 
 ### Next Steps
 
-Ready to go deeper? Part 2 covers advanced Copilot customization using a new Recipe API project.
+Ready to go deeper? **Part 2** moves on from the Todo app and uses a new starter project — the **Recipe API** at `starter-code/recipe-api` — to explore how to customize and extend Copilot itself: MCP servers, custom instructions, prompt files, custom agents, and skills.
+
+You can leave the Todo app behind for now. From Lab 05 onwards, open `starter-code/recipe-api` instead.
 
 👉 Continue to [Lab 05 - MCP (Model Context Protocol)](05-mcp.md)
 

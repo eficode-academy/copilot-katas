@@ -64,12 +64,12 @@ public class Todo
 1. Type the class declaration
 2. Press Enter to go to a new line
 3. Wait for Copilot to suggest constructor/properties
-4. Press `Cmd+→` (Mac) or `Ctrl+→` (Windows) to accept the next word. `Tab` to accept all or `Esc` to dismiss
+4. Press `Cmd+→` (Mac) or `Ctrl+→` (Windows/Linux) to accept the next word. `Tab` to accept all or `Esc` to dismiss
 5. Try typing just `pub`, `def` or `pri` and see what gets suggested
 
 **💡 Tips:**
 - If you don't like a suggestion, press `Esc` and keep typing
-- Press `Alt+]` (Windows) to see alternative suggestions or hover over the ghost text to see more options
+- Press `Option+]` (Mac) or `Alt+]` (Windows/Linux) to see alternative suggestions, or hover over the ghost text to see more options
     <p>
       <img src="images/in-line-hover-options.png" alt="Copilot Ghost Text"/>
     </p>
@@ -98,13 +98,13 @@ This is one of Copilot's most powerful features: describe what you want in plain
 Add these comments to your code file and let Copilot generate the implementations:
 
 **Comment 1 - Toggle Complete:**
-```1
+```
 // Function to toggle the completed status of a todo item
 ```
 
 **Comment 2 - Update Title:**
 ```
-// Function to update the title/text of a todo item
+// Function to update the title of a todo item
 ```
 
 **Comment 3 - Update Text:**
@@ -123,15 +123,23 @@ Add these comments to your code file and let Copilot generate the implementation
 3. Review the suggestion before accepting
 4. Modify the comment if the suggestion isn't what you wanted
 
+---
+
 ## Exercise 3: Next Edit Suggestions (NES)
 
 Copilot can predict where you'll want to edit next and suggest changes. This feature is incredibly powerful for repetitive tasks.
 
 ### Task 3.1: Repetitive Property Addition
 
-1. Create a new Todo object with one property
-2. After adding the first property, Copilot may suggest adding similar properties
-3. Look for the lightbulb or the "Next Edit" indicator
+In your scratch file, paste the snippet below and add **one** missing property to the first object — Copilot should immediately suggest the same property in the others.
+
+```javascript
+const todoA = { id: 1, text: 'Buy groceries', completed: false /* add `priority: 'high'` here */ };
+const todoB = { id: 2, text: 'Walk the dog', completed: false };
+const todoC = { id: 3, text: 'Read a book', completed: false };
+```
+
+After accepting the first NES suggestion (look for the small arrow / lightbulb in the gutter), keep pressing `Tab` to chain through the remaining edits.
 
 ### Task 3.2: Pattern Recognition
 
@@ -171,9 +179,18 @@ Then try to change the first variable name and id:
 
 ### Task 3.3: Refactoring Patterns
 
-1. Change a variable name in one place
-2. Look for Copilot to suggest the same change in other locations
-3. Use `Tab` to accept, then check if it suggests the next occurrence
+Paste this snippet into your scratch file:
+
+```javascript
+function priceWithTax(price) {
+  const taxRate = 0.2;
+  return price + price * taxRate;
+}
+console.log(priceWithTax(100));
+console.log(priceWithTax(200));
+```
+
+Now rename `priceWithTax` → `withTax` in the function declaration. Copilot should suggest the matching renames at the call sites — accept each with `Tab`.
 
 ---
 
@@ -185,14 +202,14 @@ Sometimes you only want part of a suggestion. Learn to accept word by word:
 
 | Shortcut | Action |
 |----------|--------|
-| `Cmd+→` (Mac) / `Ctrl+→` (Win) | Accept next word |
-| `Cmd+Shift+→` | Accept to end of line |
+| `Cmd+→` (Mac) / `Ctrl+→` (Windows/Linux) | Accept next word |
+| `Cmd+Shift+→` (Mac) / `Ctrl+Shift+→` (Windows/Linux) | Accept to end of line |
 
 **Try it:** Get a long suggestion and accept just the first few words.
 
 ### Task 4.2: Inline Chat for Quick Fixes
 
-Press `Cmd+I` (Mac) or `Ctrl+I` (Windows) to open inline chat:
+Press `Cmd+I` (Mac) or `Ctrl+I` (Windows/Linux) to open inline chat:
 
 **Try these prompts:**
 - "Add error handling to this function"
@@ -277,6 +294,7 @@ public class TodoList
     public Todo AddTodo(string title, string text)
     {
         // Let Copilot fill this in
+        return null!; // placeholder so the file compiles before Copilot's suggestion
     }
 }
 ```

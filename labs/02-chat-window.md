@@ -10,6 +10,12 @@ By the end of this lab, you will be able to:
 - Refactor code through conversational interaction
 - Debug issues with Copilot's help
 
+## Prerequisites
+
+- Completed [Lab 00 - Getting Started](00-getting-started.md) (Copilot installed and working)
+- Completed [Lab 01 - Inline Code Completion](01-inline-completion.md) (you should have a working `Todo` and `TodoList` class in your chosen language)
+- Your Todo App starter project open in VS Code (`starter-code/javascript`, `starter-code/python`, or `starter-code/csharp`)
+
 ## Introduction
 
 Copilot Chat is your conversational AI partner. Unlike inline completion, Chat allows for:
@@ -17,6 +23,18 @@ Copilot Chat is your conversational AI partner. Unlike inline completion, Chat a
 - **Complex explanations**: Ask "why" and "how"
 - **Guided learning**: Get step-by-step tutorials
 - **Code review**: Get feedback on your code
+
+### Chat Modes at a Glance
+
+Copilot Chat has three modes. This lab focuses on **Ask Mode**.
+
+| Mode | Purpose | Covered In |
+|------|---------|------------|
+| **Ask** | Read-only Q&A — explanations, reviews, learning | This lab |
+| **Agent** | Autonomous multi-file changes | Lab 03 |
+| **Plan** | Plan first, then execute | Lab 04 |
+
+Ask Mode does not edit your files; it answers questions and proposes code you can copy in yourself.
 
 ### Opening Copilot Chat
 
@@ -26,8 +44,12 @@ Copilot Chat is your conversational AI partner. Unlike inline completion, Chat a
 | Open Chat in Editor | `Cmd+Ctrl+I` | `Ctrl+Alt+I` |
 | Quick Chat | `Cmd+Shift+P` → "Chat: Open Quick Chat" | `Ctrl+Shift+P` → "Chat: Open Quick Chat" |
 
-### Make sure the ask mode is selected:
-<p> <img src="images/ask-mode.png" alt="Ask Mode"/> </p>
+### Make sure Ask Mode is selected
+
+Use the mode selector at the bottom of the Chat view to switch to **Ask**:
+
+<p><img src="images/ask-mode.png" alt="Ask Mode"/></p>
+
 ---
 
 ## Exercise 1: Basic Chatbot Interaction
@@ -58,10 +80,14 @@ What's a good file structure for a simple Todo app?
 
 ### Task 1.2: Ask About Your Code
 
-With your Todo file open, try these prompts:
+Open your Todo file for the language you're using:
+- JavaScript: `src/todo.js`
+- Python: `src/todo.py`
+- C#: `src/Todo.cs`
 
-**NOTE:** make sure to select the file in the chat window to provide context for these questions.
-<p> <img src="images/file-for-context.png" alt="Select file for context"/> </p>
+**NOTE:** make sure to attach the file in the chat window (or have it as the active editor) so Copilot has context for these questions.
+
+<p><img src="images/file-for-context.png" alt="Select file for context"/></p>
 
 ```
 Explain what this file does
@@ -119,11 +145,19 @@ function getLastTodo(todos) {
 ```
 
 ```python
-# Python - Type error
+# Python - ID counter never increments (inside a TodoList class)
 def add_todo(self, text):
     todo = {"id": self.next_id, "text": text}
     self.next_id + 1  # Bug: should be self.next_id += 1
     return todo
+```
+
+```csharp
+// C# - Off-by-one error
+public Todo GetLastTodo(List<Todo> todos)
+{
+    return todos[todos.Count];  // Bug: should be Count - 1
+}
 ```
 
 ### Task 2.3: Generate Tests
@@ -180,12 +214,33 @@ Context is crucial for accurate responses. Use `@` and `#` to provide Copilot wi
 
 ### Task 3.2: File References
 
+Use the filenames that match your starter project:
+
+**JavaScript:**
 ```
-#file:todo.js #file:index.html How do these files work together?
+#file:todo.js #file:todoList.js How do these files work together?
 ```
 
 ```
 #file:package.json What dependencies does this project use?
+```
+
+**Python:**
+```
+#file:todo.py #file:todo_list.py How do these files work together?
+```
+
+```
+#file:requirements.txt What dependencies does this project use?
+```
+
+**C#:**
+```
+#file:Todo.cs #file:TodoList.cs How do these files work together?
+```
+
+```
+#file:TodoApp.csproj What dependencies does this project use?
 ```
 
 ### Task 3.3: Selection Context
@@ -306,24 +361,26 @@ Suggest caching strategies for my todo operations
 
 ## Exercise 6: Build a Feature with Chat
 
-Let's use Chat to build a complete feature: **Local Storage Persistence**
+Let's use Chat to build a complete feature: **Persistence**.
+
+> **Language note:** The JavaScript starter runs in the browser, so we'll use `localStorage`. For Python and C#, ask Copilot about persisting to a JSON file on disk instead — adjust the prompts below accordingly (e.g. "save and load functions that read/write a JSON file").
 
 ### Step 1: Ask for Guidance
 
 ```
-I want to add local storage persistence to my Todo app so todos survive browser refresh. How should I approach this?
+I want to add persistence to my Todo app so todos survive a restart/refresh. How should I approach this?
 ```
 
 ### Step 2: Get Implementation
 
 ```
-Show me how to implement the save and load functions for localStorage in my TodoList class
+Show me how to implement save and load functions in my TodoList class (use localStorage for JS, or a JSON file for Python/C#).
 ```
 
 ### Step 3: Ask Follow-up Questions
 
 ```
-How should I handle the case where localStorage is not available?
+How should I handle the case where the storage layer is unavailable or fails to write?
 ```
 
 ```
@@ -333,7 +390,7 @@ When should I call the save function? On every change or periodically?
 ### Step 4: Review and Improve
 
 ```
-Review my localStorage implementation. Are there any edge cases I'm missing?
+Review my persistence implementation. Are there any edge cases I'm missing?
 ```
 
 ---
@@ -351,6 +408,8 @@ Review my localStorage implementation. Are there any edge cases I'm missing?
 ```
 
 ### Task 7.2: Dependency Analysis
+
+> Adapt the method name to your language's casing: `addTodo` (JS), `add_todo` (Python), `AddTodo` (C#).
 
 ```
 @workspace List all the places where the Todo class is used
