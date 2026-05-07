@@ -60,6 +60,7 @@ The first workshop supports multiple programming languages. Choose one:
 | **JavaScript** | Node.js 18+ |
 | **Python** | Python 3.10+ and [`uv`](https://docs.astral.sh/uv/) |
 | **C#** | .NET 8+ |
+| **R** | R 4.2+ (see [R Data Analysis lab](labs/r-data-analysis.md)) |
 
 Part 2 (Recipe API, Labs 05–09) requires **Node.js 18+** regardless of which language you chose for Part 1.
 
@@ -137,6 +138,15 @@ Encode deep domain expertise:
 - Including resources (scripts, templates, data) alongside skills
 - `/skills` command and visibility controls
 
+### R Track: Data Analysis
+
+### [Lab R - R Data Analysis](labs/r-data-analysis.md)
+A standalone lab for R developers covering the same Copilot features through a data-analysis lens:
+- Inline completion for dplyr pipelines and ggplot2 charts
+- Copilot Chat for statistical summaries and code explanation
+- Agent Mode to scaffold complete analysis scripts
+- Next Edit Suggestions for repetitive transformations
+
 ## 📁 Project Structure
 
 ```
@@ -153,7 +163,8 @@ copilot-katas/
 │   ├── 06-instructions.md
 │   ├── 07-prompts.md
 │   ├── 08-agents.md
-│   └── 09-skills.md
+│   ├── 09-skills.md
+│   └── r-data-analysis.md  ← R track (standalone)
 ├── starter-code/
 │   ├── javascript/          ← Todo App (Labs 00-04)
 │   │   ├── package.json
@@ -165,6 +176,10 @@ copilot-katas/
 │   ├── csharp/              ← Todo App (Labs 00-04)
 │   │   ├── TodoApp.csproj
 │   │   ├── Program.cs
+│   │   └── src/
+│   ├── r/                   ← R Data Analysis (Lab R)
+│   │   ├── README.md
+│   │   ├── data/
 │   │   └── src/
 │   └── recipe-api/          ← Recipe API (Labs 05-09)
 │       ├── package.json
